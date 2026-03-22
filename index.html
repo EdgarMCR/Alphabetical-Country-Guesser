@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globe Geography Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+    <div class="ui-panel">
+        <h1>Find the Countries</h1>
+        
+        <div class="controls">
+            <button id="start-btn">Start Game</button>
+            <button id="hint-btn" disabled>Give Hint</button>
+        </div>
+
+        <div id="game-status" class="hidden">
+            <h2>Target Letter: <span id="target-letter">A</span></h2>
+            <p>Remaining: <span id="remaining-count">0</span></p>
+        </div>
+
+        <div class="stats">
+            <p>Time: <span id="timer">0.0</span>s</p>
+            <p>Correct: <span id="correct-clicks">0</span></p>
+            <p>Incorrect: <span id="incorrect-clicks">0</span></p>
+            <p>Hints: <span id="hint-count">0</span></p>
+        </div>
+    </div>
+
+    <div id="globe-container"></div>
+    
+    <div id="tooltip" class="hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ui-panel {
+    width: 300px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#globe-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a192f;
+    cursor: grab;
+}
+
+#globe-container:active {
+    cursor: grabbing;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Map specific styling */
+.country {
+    fill: #444; 
+    stroke: #222;
+    stroke-width: 0.5px;
+    transition: fill 0.3s;
+}
+
+.country:hover {
+    fill: #666;
+}
+
+.country.found {
+    fill: #4CAF50; 
+}
+
+.country.hinted {
+    fill: #FFEB3B; 
+}
+
+/* Tooltip Styling */
+#tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    pointer-events: none; /* Prevents tooltip from blocking clicks */
+    font-size: 14px;
+    z-index: 100;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+}
+
+#tooltip h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #4CAF50;
+}
+
+#tooltip p {
+    margin: 0;
+    color: #ccc;
+}

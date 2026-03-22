@@ -101,3 +101,65 @@ button:hover:not(:disabled) {
     margin: 0;
     color: #ccc;
 }
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack UI and Globe vertically */
+    }
+
+    .ui-panel {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        box-sizing: border-box;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 20px 20px 0 0;
+    }
+
+    /* This class will slide the menu down out of view */
+    .ui-panel.minimized {
+        transform: translateY(80%); /* Leaves just the top header visible */
+    }
+
+    #globe-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #tooltip {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* Add a toggle handle for mobile */
+.mobile-toggle {
+    display: none;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    background: #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: block;
+    }
+}
+
+#globe-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a192f;
+    width: 100%; /* Ensure it fills the flex container */
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+}

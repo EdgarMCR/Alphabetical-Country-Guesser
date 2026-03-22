@@ -1,7 +1,11 @@
 // --- Configuration & State ---
-const width = window.innerWidth - 300; // Account for UI panel
+// Check if we are on mobile (<= 768px) immediately
+const isMobile = window.innerWidth <= 768;
+
+// If mobile, use full width. If desktop, subtract the 300px sidebar.
+const width = isMobile ? window.innerWidth : window.innerWidth - 300;
 const height = window.innerHeight;
-const initialScale = 350;
+const initialScale = isMobile ? 250 : 350; // Slightly smaller globe for small screens
 
 let geoData = null; 
 let capitalsMap = {}; // Will hold data from RestCountries API
@@ -82,34 +86,53 @@ function drawMap() {
 
 // Handles both dragging (rotation) and scrolling (zoom)
 function setupInteraction() {
-    // 1. Dragging spins the globe
-    const drag = d3.drag()
-        .on("drag", (event) => {
-            const rotate = projection.rotate();
-            projection.rotate([rotate[0] + event.dx * 0.5, rotate[1] - event.dy * 0.5]);
-            g.selectAll("path").attr("d", path);
-        });
-    
-    svg.call(drag);
-
-    // 2. Zooming scales the globe (Wheel only)
+    // 1. Zooming Configuration
     const zoom = d3.zoom()
-        .scaleExtent([0.5, 5]) // Can zoom out half-size or in 5x size
+        .scaleExtent([0.5, 5])
         .on("zoom", (event) => {
+            // Update the projection scale
             projection.scale(initialScale * event.transform.k);
+            
+            // Redraw the globe elements
             g.selectAll("path").attr("d", path);
             ocean.attr("r", projection.scale());
         });
 
+    // 2. Dragging Configuration (Rotation)
+    const drag = d3.drag()
+        .on("drag", (event) => {
+            const rotate = projection.rotate();
+            // Adjust rotation based on drag distance
+            projection.rotate([
+                rotate[0] + event.dx * (0.5 / (projection.scale() / initialScale)), 
+                rotate[1] - event.dy * (0.5 / (projection.scale() / initialScale))
+            ]);
+            g.selectAll("path").attr("d", path);
+        });
+
+    // 3. Apply behaviors
+    // Apply zoom to the SVG (the container)
     svg.call(zoom)
-       .on("mousedown.zoom", null) // Disable zoom panning so drag can rotate
+       .on("mousedown.zoom", null) // Prevents zoom from overriding single-click/drag
        .on("touchstart.zoom", null);
+
+    // Apply drag to the group 'g' (the countries) and the ocean
+    // This allows you to "grab" the land or water to spin it
+    g.call(drag);
+    ocean.call(drag);
 }
 
 // --- Game Logic ---
 
 startBtn.addEventListener('click', startGame);
 hintBtn.addEventListener('click', giveHint);
+
+const uiPanel = document.getElementById('ui-panel');
+
+// Toggle function for the manual button
+function toggleMenu() {
+    uiPanel.classList.toggle('minimized');
+}
 
 function startGame() {
     gameState.isPlaying = true;
@@ -131,6 +154,11 @@ function startGame() {
         const elapsed = (Date.now() - gameState.startTime) / 1000;
         timerEl.innerText = elapsed.toFixed(1);
     }, 100);
+
+    // On mobile, minimize the menu once the game starts
+    if (window.innerWidth <= 768) {
+        uiPanel.classList.add('minimized');
+    }
 }
 
 function setupLetter(letter) {
@@ -178,6 +206,12 @@ function handleCountryClick(event, d) {
         gameState.incorrect++;
     }
     updateStatsUI();
+
+    // On mobile, if they click a country, minimize the menu 
+    // to ensure they have a clear view of the globe
+    if (window.innerWidth <= 768 && gameState.isPlaying) {
+        uiPanel.classList.add('minimized');
+    }
 }
 
 function advanceToNextLetter() {
@@ -244,3 +278,13 @@ function updateStatsUI() {
     hintCountEl.innerText = gameState.hints;
     remainingCountEl.innerText = gameState.remainingCountries.length;
 }
+
+// Update the width/height variables to be dynamic on resize
+window.addEventListener('resize', () => {
+    const newWidth = window.innerWidth <= 768 ? window.innerWidth : window.innerWidth - 300;
+    const newHeight = window.innerHeight;
+    svg.attr("width", newWidth).attr("height", newHeight);
+    projection.translate([newWidth / 2, newHeight / 2]);
+    ocean.attr("cx", newWidth / 2).attr("cy", newHeight / 2);
+    g.selectAll("path").attr("d", path);
+});

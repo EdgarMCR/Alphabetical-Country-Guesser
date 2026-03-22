@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Globe Geography Game</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 
-    <div class="ui-panel">
+    <div class="ui-panel" id="ui-panel">
+        <div class="mobile-toggle" onclick="toggleMenu()"> ▬ Swipe/Click to Toggle Menu ▬ </div>
         <h1>Find the Countries</h1>
         
         <div class="controls">
@@ -18,7 +19,7 @@
         </div>
 
         <div id="game-status" class="hidden">
-            <h2>Target Letter: <span id="target-letter">A</span></h2>
+            <h2>Countries Starting with the Letter: <span id="target-letter">A</span></h2>
             <p>Remaining: <span id="remaining-count">0</span></p>
         </div>
 

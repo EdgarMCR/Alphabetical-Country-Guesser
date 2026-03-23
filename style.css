@@ -197,3 +197,88 @@ button:hover:not(:disabled) {
         right: 15px;
     }
 }
+
+/* --- Globe HUD --- */
+#globe-hud {
+    position: absolute;
+    top: 20px;
+    left: 320px; 
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(4px); 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.hud-letter {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.hud-count {
+    font-size: 18px;
+    color: #ddd;
+}
+
+/* --- Completion Modal --- */
+#completion-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(30, 30, 30, 0.95);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    z-index: 50;
+    text-align: center;
+    border: 2px solid #4CAF50;
+    min-width: 250px;
+}
+
+#completion-modal p {
+    font-size: 20px;
+    margin: 0;
+}
+
+#completed-letter {
+    color: #4CAF50;
+    font-size: 28px;
+}
+
+#close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    color: #aaa;
+    border: none;
+    font-size: 24px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#close-modal-btn:hover {
+    color: white;
+    background: transparent;
+}
+
+/* Mobile Adjustments for the HUD */
+@media (max-width: 768px) {
+    #globe-hud {
+        top: 15px;
+        left: 15px;
+        padding: 8px 15px;
+    }
+    .hud-letter { font-size: 24px; }
+    .hud-count { font-size: 14px; }
+}

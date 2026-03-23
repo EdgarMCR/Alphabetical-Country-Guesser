@@ -11,8 +11,9 @@
 
     <div class="ui-panel" id="ui-panel">
         <div class="mobile-toggle" onclick="toggleMenu()"> ▬ Swipe/Click to Toggle Menu ▬ </div>
-        <h1>Find the Countries</h1>
+        <h1>Find the Countries in Alphabetical Order</h1>
         
+
         <div class="controls">
             <button id="start-btn">Start Game</button>
             <button id="hint-btn" disabled>Give Hint</button>
@@ -31,6 +32,15 @@
         </div>
     </div>
 
+    <div id="globe-hud" class="hidden">
+        <span class="hud-letter" id="hud-letter">A</span>
+        <span class="hud-count" id="hud-count">0 left</span>
+    </div>
+
+    <div id="completion-modal" class="hidden">
+        <button id="close-modal-btn">&times;</button>
+        <p>Congratulations! All countries for <strong id="completed-letter">A</strong> completed!</p>
+    </div>
     <div class="zoom-controls">
         <button id="zoom-in">+</button>
         <button id="zoom-out">−</button>

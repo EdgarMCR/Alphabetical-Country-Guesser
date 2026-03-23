@@ -32,6 +32,12 @@ const correctEl = document.getElementById('correct-clicks');
 const incorrectEl = document.getElementById('incorrect-clicks');
 const hintCountEl = document.getElementById('hint-count');
 const tooltip = document.getElementById('tooltip');
+const globeHud = document.getElementById('globe-hud');
+const hudLetter = document.getElementById('hud-letter');
+const hudCount = document.getElementById('hud-count');
+const completionModal = document.getElementById('completion-modal');
+const completedLetterEl = document.getElementById('completed-letter');
+const closeModalBtn = document.getElementById('close-modal-btn');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -159,6 +165,7 @@ function startGame() {
     startBtn.innerText = "Restart Game";
     hintBtn.disabled = false;
     gameStatus.classList.remove('hidden');
+    globeHud.classList.remove('hidden');
     d3.selectAll(".country").classed("found", false).classed("hinted", false);
     
     clearInterval(gameState.timerInterval);
@@ -175,6 +182,7 @@ function startGame() {
 
 function setupLetter(letter) {
     gameState.currentLetter = letter;
+    hudLetter.innerText = gameState.currentLetter;
     gameState.remainingCountries = geoData.filter(d => {
         const name = d.properties.name || "";
         return name.toUpperCase().startsWith(letter);
@@ -199,7 +207,7 @@ function handleCountryClick(event, d) {
     setTimeout(() => { tooltip.classList.add('hidden'); }, 2500);
 
     // 2. Game Logic
-    if (!gameState.isPlaying) return;
+    if (!gameState.isPlaying || !completionModal.classList.contains('hidden')) return;
     
     const countryNode = d3.select(this);
     if (countryNode.classed("found")) return; // Ignore if already found
@@ -211,7 +219,8 @@ function handleCountryClick(event, d) {
         gameState.correct++;
         
         if (gameState.remainingCountries.length === 0) {
-            advanceToNextLetter();
+            showCompletionModal();
+            //advanceToNextLetter();
         }
     } else {
         // Incorrect click
@@ -253,6 +262,16 @@ function advanceToNextLetter() {
     setupLetter(String.fromCharCode(nextCharCode));
 }
 
+function showCompletionModal() {
+    completedLetterEl.innerText = gameState.currentLetter;
+    completionModal.classList.remove('hidden');
+}
+
+closeModalBtn.addEventListener('click', () => {
+    completionModal.classList.add('hidden');
+    advanceToNextLetter();
+});
+
 function giveHint() {
     if (!gameState.isPlaying || gameState.remainingCountries.length === 0) return;
     
@@ -289,6 +308,7 @@ function updateStatsUI() {
     incorrectEl.innerText = gameState.incorrect;
     hintCountEl.innerText = gameState.hints;
     remainingCountEl.innerText = gameState.remainingCountries.length;
+    hudCount.innerText = `${gameState.remainingCountries.length} left`;
 }
 
 // Update the width/height variables to be dynamic on resize

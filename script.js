@@ -89,6 +89,13 @@ function setupInteraction() {
     // 1. Zooming Configuration
     const zoom = d3.zoom()
         .scaleExtent([0.5, 5])
+        // NEW: Smart filter to fix mobile pinch-to-zoom
+        .filter((event) => {
+            // If it's a 1-finger touch, ignore it (let the rotation drag handle it)
+            if (event.type === 'touchstart' && event.touches && event.touches.length === 1) return false;
+            // Otherwise, allow standard zoom behavior
+            return (!event.ctrlKey || event.type === 'wheel') && !event.button;
+        })
         .on("zoom", (event) => {
             // Update the projection scale
             projection.scale(initialScale * event.transform.k);
@@ -102,7 +109,6 @@ function setupInteraction() {
     const drag = d3.drag()
         .on("drag", (event) => {
             const rotate = projection.rotate();
-            // Adjust rotation based on drag distance
             projection.rotate([
                 rotate[0] + event.dx * (0.5 / (projection.scale() / initialScale)), 
                 rotate[1] - event.dy * (0.5 / (projection.scale() / initialScale))
@@ -111,15 +117,21 @@ function setupInteraction() {
         });
 
     // 3. Apply behaviors
-    // Apply zoom to the SVG (the container)
     svg.call(zoom)
-       .on("mousedown.zoom", null) // Prevents zoom from overriding single-click/drag
-       .on("touchstart.zoom", null);
+       .on("mousedown.zoom", null); 
+       // NOTE: We deleted the "touchstart.zoom" nullification here so pinching works again!
 
-    // Apply drag to the group 'g' (the countries) and the ocean
-    // This allows you to "grab" the land or water to spin it
     g.call(drag);
     ocean.call(drag);
+
+    // 4. Wire up the Zoom +/- Buttons
+    d3.select('#zoom-in').on('click', () => {
+        svg.transition().duration(300).call(zoom.scaleBy, 1.4);
+    });
+
+    d3.select('#zoom-out').on('click', () => {
+        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+    });
 }
 
 // --- Game Logic ---

@@ -163,3 +163,37 @@ button:hover:not(:disabled) {
     overflow: hidden;
     touch-action: none;
 }
+
+/* --- Zoom Controls --- */
+.zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 20;
+}
+
+.zoom-controls button {
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Adjust position on mobile to not overlap with the pull-handle */
+@media (max-width: 768px) {
+    .zoom-controls {
+        top: 15px;
+        right: 15px;
+    }
+}

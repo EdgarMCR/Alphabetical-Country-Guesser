@@ -1,17 +1,52 @@
 // --- Configuration & State ---
-// Check if we are on mobile (<= 768px) immediately
 const isMobile = window.innerWidth <= 768;
-
-// If mobile, use full width. If desktop, subtract the 300px sidebar.
 const width = isMobile ? window.innerWidth : window.innerWidth - 300;
 const height = window.innerHeight;
-const initialScale = isMobile ? 250 : 350; // Slightly smaller globe for small screens
+const initialScale = isMobile ? 250 : 350;
 
 let geoData = null; 
-let capitalsMap = {}; // Will hold data from RestCountries API
+let capitalsMap = {}; 
+
+
+// Mapping dictionary to normalize D3/GeoJSON feature names
+const nameMapping = {
+    "England": "United Kingdom",
+    "French Southern and Antarctic Lands": "France",
+    "Republic of Serbia": "Serbia",
+    "United Republic of Tanzania": "Tanzania",
+    "West Bank": "Palenstine"
+};
+
+const ignoredAreas = new Set(["Antarctica"]);
+
+/**
+ * Looks up the normalized/corrected country name for a given D3 GeoJSON feature name.
+ * 
+ * @param {string} d3Name - The original name property from the D3 GeoJSON feature.
+ * @returns {string} The corrected name if mapped, otherwise the original d3Name.
+ */
+function getCorrectName(d3Name) {
+    return nameMapping[d3Name] || d3Name;
+}
+
+/**
+ * Gets the primary starting letter of a name, ignoring a leading "The ".
+ * 
+ * @param {string} name - The country or feature name (e.g., "The Bahamas").
+ * @returns {string} The uppercase starting letter (e.g., "B").
+ */
+function getStartingLetter(name) {
+    if (!name) return "";
+
+    // Remove leading "The " (case-insensitive) and any extra whitespace
+    const normalized = name.replace(/^the\s+/i, "").trim();
+
+    return normalized.charAt(0).toUpperCase();
+}
 
 let gameState = {
     isPlaying: false,
+    mode: 'country-en',
     currentLetter: 'A',
     remainingCountries: [],
     correct: 0,
@@ -21,10 +56,40 @@ let gameState = {
     timerInterval: null
 };
 
+// --- Helper Functions for Data Resolution ---
+function getMeta(d) {
+    // Resolve the name using the lookup function
+    const key = getCorrectName(d.properties.name);
+
+
+    const jsonEntry = capitalsMap[key];
+
+    return {
+        countryEn: jsonEntry?.countryEn || key || "Unknown",
+        countryPl: jsonEntry?.countryPl || key || "Unknown",
+        capitalEn: jsonEntry?.capitalEn || "Unknown",
+        capitalPl: jsonEntry?.capitalPl || "Unknown"
+    };
+}
+
+function getTargetValue(d, mode) {
+    const meta = getMeta(d);
+    switch (mode) {
+        case 'country-en': return meta.countryEn;
+        case 'country-pl': return meta.countryPl;
+        case 'capital-en': return meta.capitalEn;
+        case 'capital-pl': return meta.capitalPl;
+        default: return meta.countryEn;
+    }
+}
+
 // --- DOM Elements ---
 const startBtn = document.getElementById('start-btn');
+const stopBtn = document.getElementById('stop-btn');
 const hintBtn = document.getElementById('hint-btn');
+const gameModeSelect = document.getElementById('game-mode');
 const gameStatus = document.getElementById('game-status');
+const targetModeLabel = document.getElementById('target-mode-label');
 const targetLetterEl = document.getElementById('target-letter');
 const remainingCountEl = document.getElementById('remaining-count');
 const timerEl = document.getElementById('timer');
@@ -38,6 +103,7 @@ const hudCount = document.getElementById('hud-count');
 const completionModal = document.getElementById('completion-modal');
 const completedLetterEl = document.getElementById('completed-letter');
 const closeModalBtn = document.getElementById('close-modal-btn');
+const uiPanel = document.getElementById('ui-panel');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -60,24 +126,20 @@ const ocean = svg.append("circle")
 
 const g = svg.append("g");
 
-// --- Initialization ---
-// 1. Fetch map shapes
-d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(data => {
+// Load map shapes
+d3.json("data/D3world.geojson").then(data => {
     geoData = data.features;
     drawMap();
     setupInteraction();
 });
 
-// 2. Fetch capitals (to map names to capitals)
-fetch("https://restcountries.com/v3.1/all?fields=name,capital")
+// Fetch fallback capitals
+fetch("data/country_to_capital_en_pl.json")
     .then(res => res.json())
     .then(data => {
-        data.forEach(c => {
-            // Map common names to their capital cities
-            capitalsMap[c.name.common] = c.capital ? c.capital[0] : "Data unavailable";
-        });
+        capitalsMap = data;
     })
-    .catch(err => console.error("Error fetching capitals:", err));
+    .catch(err => console.warn("Could not load local capitals file:", err));
 
 function drawMap() {
     g.selectAll("path")
@@ -90,28 +152,19 @@ function drawMap() {
         .on("click", handleCountryClick);
 }
 
-// Handles both dragging (rotation) and scrolling (zoom)
 function setupInteraction() {
-    // 1. Zooming Configuration
     const zoom = d3.zoom()
         .scaleExtent([0.5, 5])
-        // NEW: Smart filter to fix mobile pinch-to-zoom
         .filter((event) => {
-            // If it's a 1-finger touch, ignore it (let the rotation drag handle it)
             if (event.type === 'touchstart' && event.touches && event.touches.length === 1) return false;
-            // Otherwise, allow standard zoom behavior
             return (!event.ctrlKey || event.type === 'wheel') && !event.button;
         })
         .on("zoom", (event) => {
-            // Update the projection scale
             projection.scale(initialScale * event.transform.k);
-            
-            // Redraw the globe elements
             g.selectAll("path").attr("d", path);
             ocean.attr("r", projection.scale());
         });
 
-    // 2. Dragging Configuration (Rotation)
     const drag = d3.drag()
         .on("drag", (event) => {
             const rotate = projection.rotate();
@@ -122,15 +175,10 @@ function setupInteraction() {
             g.selectAll("path").attr("d", path);
         });
 
-    // 3. Apply behaviors
-    svg.call(zoom)
-       .on("mousedown.zoom", null); 
-       // NOTE: We deleted the "touchstart.zoom" nullification here so pinching works again!
-
+    svg.call(zoom).on("mousedown.zoom", null);
     g.call(drag);
     ocean.call(drag);
 
-    // 4. Wire up the Zoom +/- Buttons
     d3.select('#zoom-in').on('click', () => {
         svg.transition().duration(300).call(zoom.scaleBy, 1.4);
     });
@@ -141,28 +189,31 @@ function setupInteraction() {
 }
 
 // --- Game Logic ---
-
 startBtn.addEventListener('click', startGame);
+stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
 
-const uiPanel = document.getElementById('ui-panel');
-
-// Toggle function for the manual button
 function toggleMenu() {
     uiPanel.classList.toggle('minimized');
 }
 
 function startGame() {
     gameState.isPlaying = true;
+    gameState.mode = gameModeSelect.value;
     gameState.currentLetter = 'A';
     gameState.correct = 0;
     gameState.incorrect = 0;
     gameState.hints = 0;
     gameState.startTime = Date.now();
     
+    gameModeSelect.disabled = true;
+    
+    targetModeLabel.innerText = gameState.mode.includes('capital') ? 'Capitals' : 'Countries';
+
     setupLetter(gameState.currentLetter);
 
     startBtn.innerText = "Restart Game";
+    stopBtn.disabled = false;
     hintBtn.disabled = false;
     gameStatus.classList.remove('hidden');
     globeHud.classList.remove('hidden');
@@ -174,18 +225,39 @@ function startGame() {
         timerEl.innerText = elapsed.toFixed(1);
     }, 100);
 
-    // On mobile, minimize the menu once the game starts
     if (window.innerWidth <= 768) {
         uiPanel.classList.add('minimized');
     }
 }
 
+function stopGame() {
+    gameState.isPlaying = false;
+    clearInterval(gameState.timerInterval);
+
+    // Re-enable settings and disable in-game controls
+    gameModeSelect.disabled = false;
+    startBtn.innerText = "Start Game";
+    stopBtn.disabled = true;
+    hintBtn.disabled = true;
+
+    // Hide active status UI and clear highlights
+    gameStatus.classList.add('hidden');
+    globeHud.classList.add('hidden');
+    d3.selectAll(".country").classed("found", false).classed("hinted", false);
+}
+
 function setupLetter(letter) {
     gameState.currentLetter = letter;
     hudLetter.innerText = gameState.currentLetter;
+    
+    // Filter features matching letter for selected game mode
     gameState.remainingCountries = geoData.filter(d => {
-        const name = d.properties.name || "";
-        return name.toUpperCase().startsWith(letter);
+        const d3Name = d.properties.name;
+        if (ignoredAreas.has(d3Name)) return false; // Exclude from count
+
+        const targetVal = getTargetValue(d, gameState.mode);
+        const startingLetter = getStartingLetter(targetVal);
+        return startingLetter === letter;
     });
 
     targetLetterEl.innerText = gameState.currentLetter;
@@ -193,43 +265,52 @@ function setupLetter(letter) {
 }
 
 function handleCountryClick(event, d) {
-    const countryName = d.properties.name;
-    // Some names differ slightly between the map API and capital API, fallback handles mismatches
-    const capital = capitalsMap[countryName] || "Data unavailable";
+    const meta = getMeta(d);
+    const clickedTarget = getTargetValue(d, gameState.mode);
     
-    // 1. Show Tooltip
+
+    // Determine language from the active game mode
+    const isPolish = gameState.mode.endsWith('-pl');
+    const countryName = isPolish ? meta.countryPl : meta.countryEn;
+    const capitalName = isPolish ? meta.capitalPl : meta.capitalEn;
+    const capitalLabel = isPolish ? 'Stolica' : 'Capital';
+
+    // Render detailed tooltip
     tooltip.classList.remove('hidden');
     tooltip.style.left = (event.pageX + 15) + 'px';
     tooltip.style.top = (event.pageY + 15) + 'px';
-    tooltip.innerHTML = `<h3>${countryName}</h3><p>Capital: ${capital}</p>`;
+    tooltip.innerHTML = `
+        <h3>${countryName}</h3>
+        <p>${capitalLabel}: <b>${capitalName}</b></p>
+    `;
 
-    // Hide tooltip automatically after 2.5 seconds
     setTimeout(() => { tooltip.classList.add('hidden'); }, 2500);
 
-    // 2. Game Logic
     if (!gameState.isPlaying || !completionModal.classList.contains('hidden')) return;
     
     const countryNode = d3.select(this);
-    if (countryNode.classed("found")) return; // Ignore if already found
+    if (countryNode.classed("found")) return;
 
-    if (countryName.toUpperCase().startsWith(gameState.currentLetter)) {
-        // Correct click
-        countryNode.classed("found", true);
-        gameState.remainingCountries = gameState.remainingCountries.filter(c => c.id !== d.id);
+    const startingLetter = getStartingLetter(clickedTarget.toUpperCase());
+    if (startingLetter.startsWith(gameState.currentLetter)) {
+        // Correct click: mark all areas sharing this target value as found (e.g., Falklands + UK)
+        g.selectAll("path")
+            .filter(nodeD => getTargetValue(nodeD, gameState.mode) === clickedTarget)
+            .classed("found", true);
+
+        gameState.remainingCountries = gameState.remainingCountries.filter(
+            c => getTargetValue(c, gameState.mode) !== clickedTarget
+        );
         gameState.correct++;
         
         if (gameState.remainingCountries.length === 0) {
             showCompletionModal();
-            //advanceToNextLetter();
         }
     } else {
-        // Incorrect click
         gameState.incorrect++;
     }
     updateStatsUI();
 
-    // On mobile, if they click a country, minimize the menu 
-    // to ensure they have a clear view of the globe
     if (window.innerWidth <= 768 && gameState.isPlaying) {
         uiPanel.classList.add('minimized');
     }
@@ -244,18 +325,17 @@ function advanceToNextLetter() {
     let nextCharCode = gameState.currentLetter.charCodeAt(0);
     let nextCountries = [];
     
-    // Loop forward in alphabet to find the next letter that actually has countries
     while (nextCountries.length === 0 && nextCharCode < 90) {
         nextCharCode++;
         const candidateLetter = String.fromCharCode(nextCharCode);
         nextCountries = geoData.filter(d => {
-            const name = d.properties.name || "";
-            return name.toUpperCase().startsWith(candidateLetter);
+            const targetVal = getTargetValue(d, gameState.mode);
+            return targetVal.toUpperCase().startsWith(candidateLetter);
         });
     }
 
     if (nextCountries.length === 0) {
-        endGame(); // Reached the end with no more countries
+        endGame();
         return;
     }
 
@@ -279,8 +359,10 @@ function giveHint() {
     updateStatsUI();
 
     const randomCountry = gameState.remainingCountries[Math.floor(Math.random() * gameState.remainingCountries.length)];
-    const countryEl = d3.select("#country-" + randomCountry.id);
-    countryEl.classed("hinted", true);
+    const targetVal = getTargetValue(randomCountry, gameState.mode);
+
+    const countryEls = g.selectAll("path").filter(nodeD => getTargetValue(nodeD, gameState.mode) === targetVal);
+    countryEls.classed("hinted", true);
     
     const centroid = d3.geoCentroid(randomCountry);
     d3.transition().duration(1000).tween("rotate", () => {
@@ -292,13 +374,15 @@ function giveHint() {
     });
 
     setTimeout(() => {
-        countryEl.classed("hinted", false);
+        countryEls.classed("hinted", false);
     }, 2000);
 }
 
 function endGame() {
     gameState.isPlaying = false;
+    gameModeSelect.disabled = false;
     clearInterval(gameState.timerInterval);
+    stopBtn.disabled = true;
     hintBtn.disabled = true;
     alert(`Incredible! You finished the entire alphabet in ${timerEl.innerText} seconds!`);
 }
@@ -307,11 +391,13 @@ function updateStatsUI() {
     correctEl.innerText = gameState.correct;
     incorrectEl.innerText = gameState.incorrect;
     hintCountEl.innerText = gameState.hints;
-    remainingCountEl.innerText = gameState.remainingCountries.length;
-    hudCount.innerText = `${gameState.remainingCountries.length} left`;
+    
+    // Count distinct remaining targets rather than individual geometries
+    const uniqueRemainingTargets = new Set(gameState.remainingCountries.map(c => getTargetValue(c, gameState.mode)));
+    remainingCountEl.innerText = uniqueRemainingTargets.size;
+    hudCount.innerText = `${uniqueRemainingTargets.size} left`;
 }
 
-// Update the width/height variables to be dynamic on resize
 window.addEventListener('resize', () => {
     const newWidth = window.innerWidth <= 768 ? window.innerWidth : window.innerWidth - 300;
     const newHeight = window.innerHeight;

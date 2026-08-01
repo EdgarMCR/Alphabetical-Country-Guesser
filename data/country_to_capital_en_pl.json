@@ -1,0 +1,1502 @@
+{
+  "Abkhazia": {
+    "countryEn": "Abkhazia",
+    "countryPl": "Abchazja",
+    "capitalEn": "Sukhumi",
+    "capitalPl": "Suchumi"
+  },
+  "Afghanistan": {
+    "countryEn": "Afghanistan",
+    "countryPl": "Afganistan",
+    "capitalEn": "Kabul",
+    "capitalPl": "Kabul"
+  },
+  "Akrotiri and Dhekelia": {
+    "countryEn": "Akrotiri and Dhekelia",
+    "countryPl": "Akrotiri i Dhekelia",
+    "capitalEn": "Episkopi Cantonment",
+    "capitalPl": "Episkopi Cantonment"
+  },
+  "Albania": {
+    "countryEn": "Albania",
+    "countryPl": "Albania",
+    "capitalEn": "Tirana",
+    "capitalPl": "Tirana"
+  },
+  "Algeria": {
+    "countryEn": "Algeria",
+    "countryPl": "Algieria",
+    "capitalEn": "Algiers",
+    "capitalPl": "Algier"
+  },
+  "American Samoa": {
+    "countryEn": "American Samoa",
+    "countryPl": "Samoa Amerykańskie",
+    "capitalEn": "Pago Pago",
+    "capitalPl": "Pago Pago"
+  },
+  "Andorra": {
+    "countryEn": "Andorra",
+    "countryPl": "Andora",
+    "capitalEn": "Andorra la Vella",
+    "capitalPl": "Andora"
+  },
+  "Angola": {
+    "countryEn": "Angola",
+    "countryPl": "Angola",
+    "capitalEn": "Luanda",
+    "capitalPl": "Luanda"
+  },
+  "Anguilla": {
+    "countryEn": "Anguilla",
+    "countryPl": "Anguilla",
+    "capitalEn": "The Valley",
+    "capitalPl": "The Valley"
+  },
+  "Antigua and Barbuda": {
+    "countryEn": "Antigua and Barbuda",
+    "countryPl": "Antigua i Barbuda",
+    "capitalEn": "St. John's",
+    "capitalPl": "St. John's"
+  },
+  "Argentina": {
+    "countryEn": "Argentina",
+    "countryPl": "Argentyna",
+    "capitalEn": "Buenos Aires",
+    "capitalPl": "Buenos Aires"
+  },
+  "Armenia": {
+    "countryEn": "Armenia",
+    "countryPl": "Armenia",
+    "capitalEn": "Yerevan",
+    "capitalPl": "Erywań"
+  },
+  "Aruba": {
+    "countryEn": "Aruba",
+    "countryPl": "Aruba",
+    "capitalEn": "Oranjestad",
+    "capitalPl": "Oranjestad"
+  },
+  "Ascension Island": {
+    "countryEn": "Ascension Island",
+    "countryPl": "Wyspa Wniebowstąpienia",
+    "capitalEn": "Georgetown",
+    "capitalPl": "Georgetown"
+  },
+  "Australia": {
+    "countryEn": "Australia",
+    "countryPl": "Australia",
+    "capitalEn": "Canberra",
+    "capitalPl": "Canberra"
+  },
+  "Austria": {
+    "countryEn": "Austria",
+    "countryPl": "Austria",
+    "capitalEn": "Vienna",
+    "capitalPl": "Wiedeń"
+  },
+  "Azerbaijan": {
+    "countryEn": "Azerbaijan",
+    "countryPl": "Azerbejdżan",
+    "capitalEn": "Baku",
+    "capitalPl": "Baku"
+  },
+  "The Bahamas": {
+    "countryEn": "The Bahamas",
+    "countryPl": "Bahamy",
+    "capitalEn": "Nassau",
+    "capitalPl": "Nassau"
+  },
+  "Bahrain": {
+    "countryEn": "Bahrain",
+    "countryPl": "Bahrajn",
+    "capitalEn": "Manama",
+    "capitalPl": "Manama"
+  },
+  "Bangladesh": {
+    "countryEn": "Bangladesh",
+    "countryPl": "Bangladesz",
+    "capitalEn": "Dhaka",
+    "capitalPl": "Daka"
+  },
+  "Barbados": {
+    "countryEn": "Barbados",
+    "countryPl": "Barbados",
+    "capitalEn": "Bridgetown",
+    "capitalPl": "Bridgetown"
+  },
+  "Belarus": {
+    "countryEn": "Belarus",
+    "countryPl": "Białoruś",
+    "capitalEn": "Minsk",
+    "capitalPl": "Mińsk"
+  },
+  "Belgium": {
+    "countryEn": "Belgium",
+    "countryPl": "Belgia",
+    "capitalEn": "Brussels",
+    "capitalPl": "Bruksela"
+  },
+  "Belize": {
+    "countryEn": "Belize",
+    "countryPl": "Belize",
+    "capitalEn": "Belmopan",
+    "capitalPl": "Belmopan"
+  },
+  "Benin": {
+    "countryEn": "Benin",
+    "countryPl": "Benin",
+    "capitalEn": "Porto-Novo",
+    "capitalPl": "Porto-Novo"
+  },
+  "Bermuda": {
+    "countryEn": "Bermuda",
+    "countryPl": "Bermudy",
+    "capitalEn": "Hamilton",
+    "capitalPl": "Hamilton"
+  },
+  "Bhutan": {
+    "countryEn": "Bhutan",
+    "countryPl": "Bhutan",
+    "capitalEn": "Thimphu",
+    "capitalPl": "Thimphu"
+  },
+  "Bolivia": {
+    "countryEn": "Bolivia",
+    "countryPl": "Boliwia",
+    "capitalEn": "La Paz",
+    "capitalPl": "La Paz"
+  },
+  "Bosnia and Herzegovina": {
+    "countryEn": "Bosnia and Herzegovina",
+    "countryPl": "Bośnia i Hercegowina",
+    "capitalEn": "Sarajevo",
+    "capitalPl": "Sarajewo"
+  },
+  "Botswana": {
+    "countryEn": "Botswana",
+    "countryPl": "Botswana",
+    "capitalEn": "Gaborone",
+    "capitalPl": "Gaborone"
+  },
+  "Brazil": {
+    "countryEn": "Brazil",
+    "countryPl": "Brazylia",
+    "capitalEn": "Brasília",
+    "capitalPl": "Brasília"
+  },
+  "British Virgin Islands": {
+    "countryEn": "British Virgin Islands",
+    "countryPl": "Brytyjskie Wyspy Dziewicze",
+    "capitalEn": "Road Town",
+    "capitalPl": "Road Town"
+  },
+  "Brunei": {
+    "countryEn": "Brunei",
+    "countryPl": "Brunei",
+    "capitalEn": "Bandar Seri Begawan",
+    "capitalPl": "Bandar Seri Begawan"
+  },
+  "Bulgaria": {
+    "countryEn": "Bulgaria",
+    "countryPl": "Bułgaria",
+    "capitalEn": "Sofia",
+    "capitalPl": "Sofia"
+  },
+  "Burkina Faso": {
+    "countryEn": "Burkina Faso",
+    "countryPl": "Burkina Faso",
+    "capitalEn": "Ouagadougou",
+    "capitalPl": "Wagadugu"
+  },
+  "Burundi": {
+    "countryEn": "Burundi",
+    "countryPl": "Burundi",
+    "capitalEn": "Bujumbura",
+    "capitalPl": "Bujumbura"
+  },
+  "Cambodia": {
+    "countryEn": "Cambodia",
+    "countryPl": "Kambodża",
+    "capitalEn": "Phnom Penh",
+    "capitalPl": "Phnom Penh"
+  },
+  "Cameroon": {
+    "countryEn": "Cameroon",
+    "countryPl": "Kamerun",
+    "capitalEn": "Yaoundé",
+    "capitalPl": "Jaunde"
+  },
+  "Canada": {
+    "countryEn": "Canada",
+    "countryPl": "Kanada",
+    "capitalEn": "Ottawa",
+    "capitalPl": "Ottawa"
+  },
+  "Cape Verde": {
+    "countryEn": "Cape Verde",
+    "countryPl": "Republika Zielonego Przylądka",
+    "capitalEn": "Praia",
+    "capitalPl": "Praia"
+  },
+  "Cayman Islands": {
+    "countryEn": "Cayman Islands",
+    "countryPl": "Kajmany",
+    "capitalEn": "George Town",
+    "capitalPl": "George Town"
+  },
+  "Central African Republic": {
+    "countryEn": "Central African Republic",
+    "countryPl": "Republika Środkowoafrykańska",
+    "capitalEn": "Bangui",
+    "capitalPl": "Bangi"
+  },
+  "Chad": {
+    "countryEn": "Chad",
+    "countryPl": "Czad",
+    "capitalEn": "N'Djamena",
+    "capitalPl": "Niszamena"
+  },
+  "Chile": {
+    "countryEn": "Chile",
+    "countryPl": "Chile",
+    "capitalEn": "Santiago",
+    "capitalPl": "Santiago"
+  },
+  "China": {
+    "countryEn": "China",
+    "countryPl": "Chiny",
+    "capitalEn": "Beijing",
+    "capitalPl": "Pekin"
+  },
+  "Christmas Island": {
+    "countryEn": "Christmas Island",
+    "countryPl": "Wyspa Bożego Narodzenia",
+    "capitalEn": "Flying Fish Cove",
+    "capitalPl": "Flying Fish Cove"
+  },
+  "Cocos (Keeling) Islands": {
+    "countryEn": "Cocos (Keeling) Islands",
+    "countryPl": "Wyspy Kokosowe",
+    "capitalEn": "West Island",
+    "capitalPl": "West Island"
+  },
+  "Colombia": {
+    "countryEn": "Colombia",
+    "countryPl": "Kolumbia",
+    "capitalEn": "Bogotá",
+    "capitalPl": "Bogota"
+  },
+  "Comoros": {
+    "countryEn": "Comoros",
+    "countryPl": "Komory",
+    "capitalEn": "Moroni",
+    "capitalPl": "Moroni"
+  },
+  "Cook Islands": {
+    "countryEn": "Cook Islands",
+    "countryPl": "Wyspy Kuka",
+    "capitalEn": "Avarua",
+    "capitalPl": "Avarua"
+  },
+  "Costa Rica": {
+    "countryEn": "Costa Rica",
+    "countryPl": "Kostaryka",
+    "capitalEn": "San José",
+    "capitalPl": "San José"
+  },
+  "Croatia": {
+    "countryEn": "Croatia",
+    "countryPl": "Chorwacja",
+    "capitalEn": "Zagreb",
+    "capitalPl": "Zagrzeb"
+  },
+  "Cuba": {
+    "countryEn": "Cuba",
+    "countryPl": "Kuba",
+    "capitalEn": "Havana",
+    "capitalPl": "Hawana"
+  },
+  "Curaçao": {
+    "countryEn": "Curaçao",
+    "countryPl": "Curaçao",
+    "capitalEn": "Willemstad",
+    "capitalPl": "Willemstad"
+  },
+  "Cyprus": {
+    "countryEn": "Cyprus",
+    "countryPl": "Cypr",
+    "capitalEn": "Nicosia",
+    "capitalPl": "Nikozja"
+  },
+  "Czech Republic": {
+    "countryEn": "Czech Republic",
+    "countryPl": "Czechy",
+    "capitalEn": "Prague",
+    "capitalPl": "Praga"
+  },
+  "Côte d'Ivoire": {
+    "countryEn": "Côte d'Ivoire",
+    "countryPl": "Wybrzeże Kości Słoniowej",
+    "capitalEn": "Yamoussoukro",
+    "capitalPl": "Jamusukro"
+  },
+  "Democratic Republic of the Congo": {
+    "countryEn": "Democratic Republic of the Congo",
+    "countryPl": "Demokratyczna Republika Konga",
+    "capitalEn": "Kinshasa",
+    "capitalPl": "Kinszasa"
+  },
+  "Denmark": {
+    "countryEn": "Denmark",
+    "countryPl": "Dania",
+    "capitalEn": "Copenhagen",
+    "capitalPl": "Kopenhaga"
+  },
+  "Djibouti": {
+    "countryEn": "Djibouti",
+    "countryPl": "Dżibuti",
+    "capitalEn": "Djibouti",
+    "capitalPl": "Dżibuti"
+  },
+  "Dominica": {
+    "countryEn": "Dominica",
+    "countryPl": "Dominika",
+    "capitalEn": "Roseau",
+    "capitalPl": "Roseau"
+  },
+  "Dominican Republic": {
+    "countryEn": "Dominican Republic",
+    "countryPl": "Dominikana",
+    "capitalEn": "Santo Domingo",
+    "capitalPl": "Santo Domingo"
+  },
+  "East Timor": {
+    "countryEn": "East Timor",
+    "countryPl": "Timor Wschodni",
+    "capitalEn": "Dili",
+    "capitalPl": "Dili"
+  },
+  "Easter Island": {
+    "countryEn": "Easter Island",
+    "countryPl": "Wyspa Wielkanocna",
+    "capitalEn": "Hanga Roa",
+    "capitalPl": "Hanga Roa"
+  },
+  "Ecuador": {
+    "countryEn": "Ecuador",
+    "countryPl": "Ekwador",
+    "capitalEn": "Quito",
+    "capitalPl": "Quito"
+  },
+  "Egypt": {
+    "countryEn": "Egypt",
+    "countryPl": "Egipt",
+    "capitalEn": "Cairo",
+    "capitalPl": "Kair"
+  },
+  "El Salvador": {
+    "countryEn": "El Salvador",
+    "countryPl": "Salwador",
+    "capitalEn": "San Salvador",
+    "capitalPl": "San Salvador"
+  },
+  "Equatorial Guinea": {
+    "countryEn": "Equatorial Guinea",
+    "countryPl": "Gwinea Równikowa",
+    "capitalEn": "Malabo",
+    "capitalPl": "Malabo"
+  },
+  "Eritrea": {
+    "countryEn": "Eritrea",
+    "countryPl": "Erytrea",
+    "capitalEn": "Asmara",
+    "capitalPl": "Asmara"
+  },
+  "Estonia": {
+    "countryEn": "Estonia",
+    "countryPl": "Estonia",
+    "capitalEn": "Tallinn",
+    "capitalPl": "Tallinn"
+  },
+  "Ethiopia": {
+    "countryEn": "Ethiopia",
+    "countryPl": "Etiopia",
+    "capitalEn": "Addis Ababa",
+    "capitalPl": "Addis Abeba"
+  },
+  "Falkland Islands": {
+    "countryEn": "Falkland Islands",
+    "countryPl": "Falklandy",
+    "capitalEn": "Stanley",
+    "capitalPl": "Stanley"
+  },
+  "Faroe Islands": {
+    "countryEn": "Faroe Islands",
+    "countryPl": "Wyspy Owcze",
+    "capitalEn": "Tórshavn",
+    "capitalPl": "Tórshavn"
+  },
+  "Federated States of Micronesia": {
+    "countryEn": "Federated States of Micronesia",
+    "countryPl": "Mikronezja",
+    "capitalEn": "Palikir",
+    "capitalPl": "Palikir"
+  },
+  "Fiji": {
+    "countryEn": "Fiji",
+    "countryPl": "Fidżi",
+    "capitalEn": "Suva",
+    "capitalPl": "Suva"
+  },
+  "Finland": {
+    "countryEn": "Finland",
+    "countryPl": "Finlandia",
+    "capitalEn": "Helsinki",
+    "capitalPl": "Helsinki"
+  },
+  "France": {
+    "countryEn": "France",
+    "countryPl": "Francja",
+    "capitalEn": "Paris",
+    "capitalPl": "Paryż"
+  },
+  "French Guiana": {
+    "countryEn": "French Guiana",
+    "countryPl": "Gujana Francuska",
+    "capitalEn": "Cayenne",
+    "capitalPl": "Kajenna"
+  },
+  "French Polynesia": {
+    "countryEn": "French Polynesia",
+    "countryPl": "Polinezja Francuska",
+    "capitalEn": "Papeete",
+    "capitalPl": "Papeete"
+  },
+  "Gabon": {
+    "countryEn": "Gabon",
+    "countryPl": "Gabon",
+    "capitalEn": "Libreville",
+    "capitalPl": "Libreville"
+  },
+  "Gambia": {
+    "countryEn": "Gambia",
+    "countryPl": "Gambia",
+    "capitalEn": "Banjul",
+    "capitalPl": "Bandżul"
+  },
+  "Georgia": {
+    "countryEn": "Georgia",
+    "countryPl": "Gruzja",
+    "capitalEn": "Tbilisi",
+    "capitalPl": "Tbilisi"
+  },
+  "Germany": {
+    "countryEn": "Germany",
+    "countryPl": "Niemcy",
+    "capitalEn": "Berlin",
+    "capitalPl": "Berlin"
+  },
+  "Ghana": {
+    "countryEn": "Ghana",
+    "countryPl": "Gana",
+    "capitalEn": "Accra",
+    "capitalPl": "Akra"
+  },
+  "Gibraltar": {
+    "countryEn": "Gibraltar",
+    "countryPl": "Gibraltar",
+    "capitalEn": "Gibraltar",
+    "capitalPl": "Gibraltar"
+  },
+  "Greece": {
+    "countryEn": "Greece",
+    "countryPl": "Grecja",
+    "capitalEn": "Athens",
+    "capitalPl": "Ateny"
+  },
+  "Greenland": {
+    "countryEn": "Greenland",
+    "countryPl": "Grenlandia",
+    "capitalEn": "Nuuk",
+    "capitalPl": "Nuuk"
+  },
+  "Grenada": {
+    "countryEn": "Grenada",
+    "countryPl": "Grenada",
+    "capitalEn": "St. George's",
+    "capitalPl": "St. George's"
+  },
+  "Guam": {
+    "countryEn": "Guam",
+    "countryPl": "Guam",
+    "capitalEn": "Hagåtña",
+    "capitalPl": "Hagåtña"
+  },
+  "Guatemala": {
+    "countryEn": "Guatemala",
+    "countryPl": "Gwatemala",
+    "capitalEn": "Guatemala City",
+    "capitalPl": "Gwatemala"
+  },
+  "Guernsey": {
+    "countryEn": "Guernsey",
+    "countryPl": "Guernsey",
+    "capitalEn": "St. Peter Port",
+    "capitalPl": "St. Peter Port"
+  },
+  "Guinea": {
+    "countryEn": "Guinea",
+    "countryPl": "Gwinea",
+    "capitalEn": "Conakry",
+    "capitalPl": "Konakry"
+  },
+  "Guinea Bissau": {
+    "countryEn": "Guinea Bissau",
+    "countryPl": "Gwinea Bissau",
+    "capitalEn": "Bissau",
+    "capitalPl": "Bissau"
+  },
+  "Guyana": {
+    "countryEn": "Guyana",
+    "countryPl": "Gujana",
+    "capitalEn": "Georgetown",
+    "capitalPl": "Georgetown"
+  },
+  "Haiti": {
+    "countryEn": "Haiti",
+    "countryPl": "Haiti",
+    "capitalEn": "Port-au-Prince",
+    "capitalPl": "Port-au-Prince"
+  },
+  "Honduras": {
+    "countryEn": "Honduras",
+    "countryPl": "Honduras",
+    "capitalEn": "Tegucigalpa",
+    "capitalPl": "Tegucigalpa"
+  },
+  "Hungary": {
+    "countryEn": "Hungary",
+    "countryPl": "Węgry",
+    "capitalEn": "Budapest",
+    "capitalPl": "Budapeszt"
+  },
+  "Iceland": {
+    "countryEn": "Iceland",
+    "countryPl": "Islandia",
+    "capitalEn": "Reykjavík",
+    "capitalPl": "Reykjavík"
+  },
+  "India": {
+    "countryEn": "India",
+    "countryPl": "Indie",
+    "capitalEn": "New Delhi",
+    "capitalPl": "Nowe Delhi"
+  },
+  "Indonesia": {
+    "countryEn": "Indonesia",
+    "countryPl": "Indonezja",
+    "capitalEn": "Jakarta",
+    "capitalPl": "Dżakarta"
+  },
+  "Iran": {
+    "countryEn": "Iran",
+    "countryPl": "Iran",
+    "capitalEn": "Tehran",
+    "capitalPl": "Teheran"
+  },
+  "Iraq": {
+    "countryEn": "Iraq",
+    "countryPl": "Irak",
+    "capitalEn": "Baghdad",
+    "capitalPl": "Bagdad"
+  },
+  "Ireland": {
+    "countryEn": "Ireland",
+    "countryPl": "Irlandia",
+    "capitalEn": "Dublin",
+    "capitalPl": "Dublin"
+  },
+  "Isle of Man": {
+    "countryEn": "Isle of Man",
+    "countryPl": "Wyspa Man",
+    "capitalEn": "Douglas",
+    "capitalPl": "Douglas"
+  },
+  "Israel": {
+    "countryEn": "Israel",
+    "countryPl": "Izrael",
+    "capitalEn": "Jerusalem",
+    "capitalPl": "Jerozolima"
+  },
+  "Italy": {
+    "countryEn": "Italy",
+    "countryPl": "Włochy",
+    "capitalEn": "Rome",
+    "capitalPl": "Rzym"
+  },
+  "Ivory Coast": {
+    "countryEn": "Ivory Coast",
+    "countryPl": "Wybrzeże Kości Słoniowej",
+    "capitalEn": "Yamoussoukro",
+    "capitalPl": "Jamusukro"
+  },
+  "Jamaica": {
+    "countryEn": "Jamaica",
+    "countryPl": "Jamajka",
+    "capitalEn": "Kingston",
+    "capitalPl": "Kingston"
+  },
+  "Japan": {
+    "countryEn": "Japan",
+    "countryPl": "Japonia",
+    "capitalEn": "Tokyo",
+    "capitalPl": "Tokio"
+  },
+  "Jersey": {
+    "countryEn": "Jersey",
+    "countryPl": "Jersey",
+    "capitalEn": "St. Helier",
+    "capitalPl": "St. Helier"
+  },
+  "Jordan": {
+    "countryEn": "Jordan",
+    "countryPl": "Jordania",
+    "capitalEn": "Amman",
+    "capitalPl": "Amman"
+  },
+  "Kazakhstan": {
+    "countryEn": "Kazakhstan",
+    "countryPl": "Kazachstan",
+    "capitalEn": "Astana",
+    "capitalPl": "Astana"
+  },
+  "Kenya": {
+    "countryEn": "Kenya",
+    "countryPl": "Kenia",
+    "capitalEn": "Nairobi",
+    "capitalPl": "Nairobi"
+  },
+  "Kiribati": {
+    "countryEn": "Kiribati",
+    "countryPl": "Kiribati",
+    "capitalEn": "Tarawa",
+    "capitalPl": "Tarawa"
+  },
+  "Kosovo": {
+    "countryEn": "Kosovo",
+    "countryPl": "Kosowo",
+    "capitalEn": "Pristina",
+    "capitalPl": "Prisztina"
+  },
+  "Kuwait": {
+    "countryEn": "Kuwait",
+    "countryPl": "Kuwejt",
+    "capitalEn": "Kuwait City",
+    "capitalPl": "Kuwejt"
+  },
+  "Kyrgyzstan": {
+    "countryEn": "Kyrgyzstan",
+    "countryPl": "Kirgistan",
+    "capitalEn": "Bishkek",
+    "capitalPl": "Biszkek"
+  },
+  "Laos": {
+    "countryEn": "Laos",
+    "countryPl": "Laos",
+    "capitalEn": "Vientiane",
+    "capitalPl": "Wientian"
+  },
+  "Latvia": {
+    "countryEn": "Latvia",
+    "countryPl": "Łotwa",
+    "capitalEn": "Riga",
+    "capitalPl": "Ryga"
+  },
+  "Lebanon": {
+    "countryEn": "Lebanon",
+    "countryPl": "Liban",
+    "capitalEn": "Beirut",
+    "capitalPl": "Bejrut"
+  },
+  "Lesotho": {
+    "countryEn": "Lesotho",
+    "countryPl": "Lesotho",
+    "capitalEn": "Maseru",
+    "capitalPl": "Maseru"
+  },
+  "Liberia": {
+    "countryEn": "Liberia",
+    "countryPl": "Liberia",
+    "capitalEn": "Monrovia",
+    "capitalPl": "Monrowia"
+  },
+  "Libya": {
+    "countryEn": "Libya",
+    "countryPl": "Libia",
+    "capitalEn": "Tripoli",
+    "capitalPl": "Trypolis"
+  },
+  "Liechtenstein": {
+    "countryEn": "Liechtenstein",
+    "countryPl": "Liechtenstein",
+    "capitalEn": "Vaduz",
+    "capitalPl": "Vaduz"
+  },
+  "Lithuania": {
+    "countryEn": "Lithuania",
+    "countryPl": "Litwa",
+    "capitalEn": "Vilnius",
+    "capitalPl": "Wilno"
+  },
+  "Luxembourg": {
+    "countryEn": "Luxembourg",
+    "countryPl": "Luksemburg",
+    "capitalEn": "Luxembourg",
+    "capitalPl": "Luksemburg"
+  },
+  "Macedonia": {
+    "countryEn": "Macedonia",
+    "countryPl": "Macedonia Północna",
+    "capitalEn": "Skopje",
+    "capitalPl": "Skopje"
+  },
+  "Madagascar": {
+    "countryEn": "Madagascar",
+    "countryPl": "Madagaskar",
+    "capitalEn": "Antananarivo",
+    "capitalPl": "Antananarywa"
+  },
+  "Malawi": {
+    "countryEn": "Malawi",
+    "countryPl": "Malawi",
+    "capitalEn": "Lilongwe",
+    "capitalPl": "Lilongwe"
+  },
+  "Malaysia": {
+    "countryEn": "Malaysia",
+    "countryPl": "Malezja",
+    "capitalEn": "Kuala Lumpur",
+    "capitalPl": "Kuala Lumpur"
+  },
+  "Maldives": {
+    "countryEn": "Maldives",
+    "countryPl": "Malediwy",
+    "capitalEn": "Malé",
+    "capitalPl": "Malé"
+  },
+  "Mali": {
+    "countryEn": "Mali",
+    "countryPl": "Mali",
+    "capitalEn": "Bamako",
+    "capitalPl": "Bamako"
+  },
+  "Malta": {
+    "countryEn": "Malta",
+    "countryPl": "Malta",
+    "capitalEn": "Valletta",
+    "capitalPl": "Valletta"
+  },
+  "Marshall Islands": {
+    "countryEn": "Marshall Islands",
+    "countryPl": "Wyspy Marshalla",
+    "capitalEn": "Majuro",
+    "capitalPl": "Majuro"
+  },
+  "Mauritania": {
+    "countryEn": "Mauritania",
+    "countryPl": "Mauretania",
+    "capitalEn": "Nouakchott",
+    "capitalPl": "Nuakszot"
+  },
+  "Mauritius": {
+    "countryEn": "Mauritius",
+    "countryPl": "Mauritius",
+    "capitalEn": "Port Louis",
+    "capitalPl": "Port Louis"
+  },
+  "Mexico": {
+    "countryEn": "Mexico",
+    "countryPl": "Meksyk",
+    "capitalEn": "Mexico City",
+    "capitalPl": "Meksyk"
+  },
+  "Moldova": {
+    "countryEn": "Moldova",
+    "countryPl": "Mołdawia",
+    "capitalEn": "Chisinau",
+    "capitalPl": "Kiszyniów"
+  },
+  "Monaco": {
+    "countryEn": "Monaco",
+    "countryPl": "Monako",
+    "capitalEn": "Monaco",
+    "capitalPl": "Monako"
+  },
+  "Mongolia": {
+    "countryEn": "Mongolia",
+    "countryPl": "Mongolia",
+    "capitalEn": "Ulaanbaatar",
+    "capitalPl": "Ułan Bator"
+  },
+  "Montenegro": {
+    "countryEn": "Montenegro",
+    "countryPl": "Czarnogóra",
+    "capitalEn": "Podgorica",
+    "capitalPl": "Podgorica"
+  },
+  "Montserrat": {
+    "countryEn": "Montserrat",
+    "countryPl": "Montserrat",
+    "capitalEn": "Plymouth",
+    "capitalPl": "Plymouth"
+  },
+  "Morocco": {
+    "countryEn": "Morocco",
+    "countryPl": "Maroko",
+    "capitalEn": "Rabat",
+    "capitalPl": "Rabat"
+  },
+  "Mozambique": {
+    "countryEn": "Mozambique",
+    "countryPl": "Mozambik",
+    "capitalEn": "Maputo",
+    "capitalPl": "Maputo"
+  },
+  "Myanmar": {
+    "countryEn": "Myanmar",
+    "countryPl": "Mjanma",
+    "capitalEn": "Naypyidaw",
+    "capitalPl": "Naypyidaw"
+  },
+  "Nagorno-Karabakh Republic": {
+    "countryEn": "Nagorno-Karabakh Republic",
+    "countryPl": "Górski Karabach",
+    "capitalEn": "Stepanakert",
+    "capitalPl": "Stepanakert"
+  },
+  "Namibia": {
+    "countryEn": "Namibia",
+    "countryPl": "Namibia",
+    "capitalEn": "Windhoek",
+    "capitalPl": "Windhuk"
+  },
+  "Nauru": {
+    "countryEn": "Nauru",
+    "countryPl": "Nauru",
+    "capitalEn": "Yaren",
+    "capitalPl": "Yaren"
+  },
+  "Nepal": {
+    "countryEn": "Nepal",
+    "countryPl": "Nepal",
+    "capitalEn": "Kathmandu",
+    "capitalPl": "Katmandu"
+  },
+  "Netherlands": {
+    "countryEn": "Netherlands",
+    "countryPl": "Holandia",
+    "capitalEn": "Amsterdam",
+    "capitalPl": "Amsterdam"
+  },
+  "New Caledonia": {
+    "countryEn": "New Caledonia",
+    "countryPl": "Nowa Kaledonia",
+    "capitalEn": "Nouméa",
+    "capitalPl": "Numea"
+  },
+  "New Zealand": {
+    "countryEn": "New Zealand",
+    "countryPl": "Nowa Zelandia",
+    "capitalEn": "Wellington",
+    "capitalPl": "Wellington"
+  },
+  "Nicaragua": {
+    "countryEn": "Nicaragua",
+    "countryPl": "Nikaragua",
+    "capitalEn": "Managua",
+    "capitalPl": "Managua"
+  },
+  "Niger": {
+    "countryEn": "Niger",
+    "countryPl": "Niger",
+    "capitalEn": "Niamey",
+    "capitalPl": "Niamey"
+  },
+  "Nigeria": {
+    "countryEn": "Nigeria",
+    "countryPl": "Nigeria",
+    "capitalEn": "Abuja",
+    "capitalPl": "Abudża"
+  },
+  "Niue": {
+    "countryEn": "Niue",
+    "countryPl": "Niue",
+    "capitalEn": "Alofi",
+    "capitalPl": "Alofi"
+  },
+  "Norfolk Island": {
+    "countryEn": "Norfolk Island",
+    "countryPl": "Norfolk",
+    "capitalEn": "Kingston",
+    "capitalPl": "Kingston"
+  },
+  "North Korea": {
+    "countryEn": "North Korea",
+    "countryPl": "Korea Północna",
+    "capitalEn": "Pyongyang",
+    "capitalPl": "Pjongjang"
+  },
+  "Northern Cyprus": {
+    "countryEn": "Northern Cyprus",
+    "countryPl": "Cypr Północny",
+    "capitalEn": "Nicosia",
+    "capitalPl": "Nikozja"
+  },
+  "United Kingdom Northern Ireland": {
+    "countryEn": "United Kingdom Northern Ireland",
+    "countryPl": "Irlandia Północna",
+    "capitalEn": "Belfast",
+    "capitalPl": "Belfast"
+  },
+  "Northern Mariana Islands": {
+    "countryEn": "Northern Mariana Islands",
+    "countryPl": "Mariany Północne",
+    "capitalEn": "Saipan",
+    "capitalPl": "Saipan"
+  },
+  "Norway": {
+    "countryEn": "Norway",
+    "countryPl": "Norwegia",
+    "capitalEn": "Oslo",
+    "capitalPl": "Oslo"
+  },
+  "Oman": {
+    "countryEn": "Oman",
+    "countryPl": "Oman",
+    "capitalEn": "Muscat",
+    "capitalPl": "Maskat"
+  },
+  "Pakistan": {
+    "countryEn": "Pakistan",
+    "countryPl": "Pakistan",
+    "capitalEn": "Islamabad",
+    "capitalPl": "Islamabad"
+  },
+  "Palau": {
+    "countryEn": "Palau",
+    "countryPl": "Palau",
+    "capitalEn": "Ngerulmud",
+    "capitalPl": "Ngerulmud"
+  },
+  "Palestine": {
+    "countryEn": "Palestine",
+    "countryPl": "Palestyna",
+    "capitalEn": "Jerusalem",
+    "capitalPl": "Jerozolima"
+  },
+  "Panama": {
+    "countryEn": "Panama",
+    "countryPl": "Panama",
+    "capitalEn": "Panama City",
+    "capitalPl": "Panama"
+  },
+  "Papua New Guinea": {
+    "countryEn": "Papua New Guinea",
+    "countryPl": "Papua-Nowa Gwinea",
+    "capitalEn": "Port Moresby",
+    "capitalPl": "Port Moresby"
+  },
+  "Paraguay": {
+    "countryEn": "Paraguay",
+    "countryPl": "Paragwaj",
+    "capitalEn": "Asunción",
+    "capitalPl": "Asunción"
+  },
+  "Peru": {
+    "countryEn": "Peru",
+    "countryPl": "Peru",
+    "capitalEn": "Lima",
+    "capitalPl": "Lima"
+  },
+  "Philippines": {
+    "countryEn": "Philippines",
+    "countryPl": "Filipiny",
+    "capitalEn": "Manila",
+    "capitalPl": "Manila"
+  },
+  "Pitcairn Islands": {
+    "countryEn": "Pitcairn Islands",
+    "countryPl": "Pitcairn",
+    "capitalEn": "Adamstown",
+    "capitalPl": "Adamstown"
+  },
+  "Poland": {
+    "countryEn": "Poland",
+    "countryPl": "Polska",
+    "capitalEn": "Warsaw",
+    "capitalPl": "Warszawa"
+  },
+  "Portugal": {
+    "countryEn": "Portugal",
+    "countryPl": "Portugalia",
+    "capitalEn": "Lisbon",
+    "capitalPl": "Lizbona"
+  },
+  "Puerto Rico": {
+    "countryEn": "Puerto Rico",
+    "countryPl": "Portoryko",
+    "capitalEn": "San Juan",
+    "capitalPl": "San Juan"
+  },
+  "Qatar": {
+    "countryEn": "Qatar",
+    "countryPl": "Katar",
+    "capitalEn": "Doha",
+    "capitalPl": "Ad-Dauha"
+  },
+  "Republic of China (Taiwan)": {
+    "countryEn": "Republic of China (Taiwan)",
+    "countryPl": "Tajwan",
+    "capitalEn": "Taipei",
+    "capitalPl": "Tajpej"
+  },
+  "Republic of the Congo": {
+    "countryEn": "Republic of the Congo",
+    "countryPl": "Kongo",
+    "capitalEn": "Brazzaville",
+    "capitalPl": "Brazzaville"
+  },
+  "Romania": {
+    "countryEn": "Romania",
+    "countryPl": "Rumunia",
+    "capitalEn": "Bucharest",
+    "capitalPl": "Bukareszt"
+  },
+  "Russia": {
+    "countryEn": "Russia",
+    "countryPl": "Rosja",
+    "capitalEn": "Moscow",
+    "capitalPl": "Moskwa"
+  },
+  "Rwanda": {
+    "countryEn": "Rwanda",
+    "countryPl": "Rwanda",
+    "capitalEn": "Kigali",
+    "capitalPl": "Kigali"
+  },
+  "Saint Barthélemy": {
+    "countryEn": "Saint Barthélemy",
+    "countryPl": "Saint-Barthélemy",
+    "capitalEn": "Gustavia",
+    "capitalPl": "Gustavia"
+  },
+  "Saint Helena": {
+    "countryEn": "Saint Helena",
+    "countryPl": "Wyspa Świętej Heleny",
+    "capitalEn": "Jamestown",
+    "capitalPl": "Jamestown"
+  },
+  "Saint Kitts and Nevis": {
+    "countryEn": "Saint Kitts and Nevis",
+    "countryPl": "Saint Kitts i Nevis",
+    "capitalEn": "Basseterre",
+    "capitalPl": "Basseterre"
+  },
+  "Saint Lucia": {
+    "countryEn": "Saint Lucia",
+    "countryPl": "Saint Lucia",
+    "capitalEn": "Castries",
+    "capitalPl": "Castries"
+  },
+  "Saint Martin": {
+    "countryEn": "Saint Martin",
+    "countryPl": "Saint-Martin",
+    "capitalEn": "Marigot",
+    "capitalPl": "Marigot"
+  },
+  "Saint Pierre and Miquelon": {
+    "countryEn": "Saint Pierre and Miquelon",
+    "countryPl": "Saint-Pierre i Miquelon",
+    "capitalEn": "St. Pierre",
+    "capitalPl": "Saint-Pierre"
+  },
+  "Saint Vincent and the Grenadines": {
+    "countryEn": "Saint Vincent and the Grenadines",
+    "countryPl": "Saint Vincent i Grenadyny",
+    "capitalEn": "Kingstown",
+    "capitalPl": "Kingstown"
+  },
+  "Samoa": {
+    "countryEn": "Samoa",
+    "countryPl": "Samoa",
+    "capitalEn": "Apia",
+    "capitalPl": "Apia"
+  },
+  "San Marino": {
+    "countryEn": "San Marino",
+    "countryPl": "San Marino",
+    "capitalEn": "San Marino",
+    "capitalPl": "San Marino"
+  },
+  "Saudi Arabia": {
+    "countryEn": "Saudi Arabia",
+    "countryPl": "Arabia Saudyjska",
+    "capitalEn": "Riyadh",
+    "capitalPl": "Rijad"
+  },
+  "Scotland": {
+    "countryEn": "Scotland",
+    "countryPl": "Szkocja",
+    "capitalEn": "Edinburgh",
+    "capitalPl": "Edynburg"
+  },
+  "Senegal": {
+    "countryEn": "Senegal",
+    "countryPl": "Senegal",
+    "capitalEn": "Dakar",
+    "capitalPl": "Dakar"
+  },
+  "Serbia": {
+    "countryEn": "Serbia",
+    "countryPl": "Serbia",
+    "capitalEn": "Belgrade",
+    "capitalPl": "Belgrad"
+  },
+  "Seychelles": {
+    "countryEn": "Seychelles",
+    "countryPl": "Seszele",
+    "capitalEn": "Victoria",
+    "capitalPl": "Wiktoria"
+  },
+  "Sierra Leone": {
+    "countryEn": "Sierra Leone",
+    "countryPl": "Sierra Leone",
+    "capitalEn": "Freetown",
+    "capitalPl": "Freetown"
+  },
+  "Singapore": {
+    "countryEn": "Singapore",
+    "countryPl": "Singapur",
+    "capitalEn": "Singapore",
+    "capitalPl": "Singapur"
+  },
+  "Sint Maarten": {
+    "countryEn": "Sint Maarten",
+    "countryPl": "Sint Maarten",
+    "capitalEn": "Philipsburg",
+    "capitalPl": "Philipsburg"
+  },
+  "Slovakia": {
+    "countryEn": "Slovakia",
+    "countryPl": "Słowacja",
+    "capitalEn": "Bratislava",
+    "capitalPl": "Bratysława"
+  },
+  "Slovenia": {
+    "countryEn": "Slovenia",
+    "countryPl": "Słowenia",
+    "capitalEn": "Ljubljana",
+    "capitalPl": "Lublana"
+  },
+  "Solomon Islands": {
+    "countryEn": "Solomon Islands",
+    "countryPl": "Wyspy Salomona",
+    "capitalEn": "Honiara",
+    "capitalPl": "Honiara"
+  },
+  "Somalia": {
+    "countryEn": "Somalia",
+    "countryPl": "Somalia",
+    "capitalEn": "Mogadishu",
+    "capitalPl": "Mogadisz"
+  },
+  "Somaliland": {
+    "countryEn": "Somaliland",
+    "countryPl": "Somaliland",
+    "capitalEn": "Hargeisa",
+    "capitalPl": "Hargejsa"
+  },
+  "South Africa": {
+    "countryEn": "South Africa",
+    "countryPl": "Republika Południowej Afryki",
+    "capitalEn": "Pretoria",
+    "capitalPl": "Pretoria"
+  },
+  "South Georgia and the South Sandwich Islands": {
+    "countryEn": "South Georgia and the South Sandwich Islands",
+    "countryPl": "Georgia Południowa i Sandwich Południowy",
+    "capitalEn": "Grytviken",
+    "capitalPl": "Grytviken"
+  },
+  "South Korea": {
+    "countryEn": "South Korea",
+    "countryPl": "Korea Południowa",
+    "capitalEn": "Seoul",
+    "capitalPl": "Seul"
+  },
+  "South Ossetia": {
+    "countryEn": "South Ossetia",
+    "countryPl": "Osetia Południowa",
+    "capitalEn": "Tskhinvali",
+    "capitalPl": "Cchinwali"
+  },
+  "South Sudan": {
+    "countryEn": "South Sudan",
+    "countryPl": "Sudan Południowy",
+    "capitalEn": "Juba",
+    "capitalPl": "Dżuba"
+  },
+  "Spain": {
+    "countryEn": "Spain",
+    "countryPl": "Hiszpania",
+    "capitalEn": "Madrid",
+    "capitalPl": "Madryt"
+  },
+  "Sri Lanka": {
+    "countryEn": "Sri Lanka",
+    "countryPl": "Sri Lanka",
+    "capitalEn": "Sri Jayawardenapura Kotte",
+    "capitalPl": "Sri Dźajawardanapura Kotte"
+  },
+  "Sudan": {
+    "countryEn": "Sudan",
+    "countryPl": "Sudan",
+    "capitalEn": "Khartoum",
+    "capitalPl": "Chartum"
+  },
+  "Suriname": {
+    "countryEn": "Suriname",
+    "countryPl": "Surinam",
+    "capitalEn": "Paramaribo",
+    "capitalPl": "Paramaribo"
+  },
+  "Swaziland": {
+    "countryEn": "Swaziland",
+    "countryPl": "Eswatini",
+    "capitalEn": "Mbabane",
+    "capitalPl": "Mbabane"
+  },
+  "Sweden": {
+    "countryEn": "Sweden",
+    "countryPl": "Szwecja",
+    "capitalEn": "Stockholm",
+    "capitalPl": "Sztokholm"
+  },
+  "Switzerland": {
+    "countryEn": "Switzerland",
+    "countryPl": "Szwajcaria",
+    "capitalEn": "Bern",
+    "capitalPl": "Berno"
+  },
+  "Syria": {
+    "countryEn": "Syria",
+    "countryPl": "Syria",
+    "capitalEn": "Damascus",
+    "capitalPl": "Damaszek"
+  },
+  "São Tomé and Príncipe": {
+    "countryEn": "São Tomé and Príncipe",
+    "countryPl": "Wyspy Świętego Tomasza i Książęca",
+    "capitalEn": "São Tomé",
+    "capitalPl": "São Tomé"
+  },
+  "Taiwan": {
+    "countryEn": "Taiwan",
+    "countryPl": "Tajwan",
+    "capitalEn": "Taipei",
+    "capitalPl": "Tajpej"
+  },
+  "Tajikistan": {
+    "countryEn": "Tajikistan",
+    "countryPl": "Tadżykistan",
+    "capitalEn": "Dushanbe",
+    "capitalPl": "Duszanbe"
+  },
+  "Tanzania": {
+    "countryEn": "Tanzania",
+    "countryPl": "Tanzania",
+    "capitalEn": "Dodoma",
+    "capitalPl": "Dodoma"
+  },
+  "Thailand": {
+    "countryEn": "Thailand",
+    "countryPl": "Tajlandia",
+    "capitalEn": "Bangkok",
+    "capitalPl": "Bangkok"
+  },
+  "Togo": {
+    "countryEn": "Togo",
+    "countryPl": "Togo",
+    "capitalEn": "Lomé",
+    "capitalPl": "Lomé"
+  },
+  "Tonga": {
+    "countryEn": "Tonga",
+    "countryPl": "Tonga",
+    "capitalEn": "Nukuʻalofa",
+    "capitalPl": "Nukuʻalofa"
+  },
+  "Transnistria": {
+    "countryEn": "Transnistria",
+    "countryPl": "Naddniestrze",
+    "capitalEn": "Tiraspol",
+    "capitalPl": "Tyraspol"
+  },
+  "Trinidad and Tobago": {
+    "countryEn": "Trinidad and Tobago",
+    "countryPl": "Trynidad i Tobago",
+    "capitalEn": "Port of Spain",
+    "capitalPl": "Port-of-Spain"
+  },
+  "Tristan da Cunha": {
+    "countryEn": "Tristan da Cunha",
+    "countryPl": "Tristan da Cunha",
+    "capitalEn": "Edinburgh of the Seven Seas",
+    "capitalPl": "Edynburg Siedmiu Mórz"
+  },
+  "Tunisia": {
+    "countryEn": "Tunisia",
+    "countryPl": "Tunezja",
+    "capitalEn": "Tunis",
+    "capitalPl": "Tunis"
+  },
+  "Turkey": {
+    "countryEn": "Turkey",
+    "countryPl": "Turcja",
+    "capitalEn": "Ankara",
+    "capitalPl": "Ankara"
+  },
+  "Turkmenistan": {
+    "countryEn": "Turkmenistan",
+    "countryPl": "Turkmenistan",
+    "capitalEn": "Ashgabat",
+    "capitalPl": "Aszchabad"
+  },
+  "Turks and Caicos Islands": {
+    "countryEn": "Turks and Caicos Islands",
+    "countryPl": "Turks i Caicos",
+    "capitalEn": "Cockburn Town",
+    "capitalPl": "Cockburn Town"
+  },
+  "Tuvalu": {
+    "countryEn": "Tuvalu",
+    "countryPl": "Tuvalu",
+    "capitalEn": "Funafuti",
+    "capitalPl": "Funafuti"
+  },
+  "Uganda": {
+    "countryEn": "Uganda",
+    "countryPl": "Uganda",
+    "capitalEn": "Kampala",
+    "capitalPl": "Kampala"
+  },
+  "Ukraine": {
+    "countryEn": "Ukraine",
+    "countryPl": "Ukraina",
+    "capitalEn": "Kiev",
+    "capitalPl": "Kijów"
+  },
+  "United Arab Emirates": {
+    "countryEn": "United Arab Emirates",
+    "countryPl": "Zjednoczone Emiraty Arabskie",
+    "capitalEn": "Abu Dhabi",
+    "capitalPl": "Abu Zabi"
+  },
+  "United Kingdom": {
+    "countryEn": "United Kingdom",
+    "countryPl": "Wielka Brytania",
+    "capitalEn": "London",
+    "capitalPl": "Londyn"
+  },
+  "United States": {
+    "countryEn": "United States",
+    "countryPl": "Stany Zjednoczone",
+    "capitalEn": "Washington, D.C.",
+    "capitalPl": "Waszyngton"
+  },
+  "USA": {
+    "countryEn": "USA",
+    "countryPl": "Stany Zjednoczone",
+    "capitalEn": "Washington, D.C.",
+    "capitalPl": "Waszyngton"
+  },
+  "United States Virgin Islands": {
+    "countryEn": "United States Virgin Islands",
+    "countryPl": "Wyspy Dziewicze Stanów Zjednoczonych",
+    "capitalEn": "Charlotte Amalie",
+    "capitalPl": "Charlotte Amalie"
+  },
+  "Uruguay": {
+    "countryEn": "Uruguay",
+    "countryPl": "Urugwaj",
+    "capitalEn": "Montevideo",
+    "capitalPl": "Montevideo"
+  },
+  "Uzbekistan": {
+    "countryEn": "Uzbekistan",
+    "countryPl": "Uzbekistan",
+    "capitalEn": "Tashkent",
+    "capitalPl": "Taszkent"
+  },
+  "Vanuatu": {
+    "countryEn": "Vanuatu",
+    "countryPl": "Vanuatu",
+    "capitalEn": "Port Vila",
+    "capitalPl": "Port Vila"
+  },
+  "Vatican City": {
+    "countryEn": "Vatican City",
+    "countryPl": "Watykan",
+    "capitalEn": "Vatican City",
+    "capitalPl": "Watykan"
+  },
+  "Venezuela": {
+    "countryEn": "Venezuela",
+    "countryPl": "Wenezuela",
+    "capitalEn": "Caracas",
+    "capitalPl": "Caracas"
+  },
+  "Vietnam": {
+    "countryEn": "Vietnam",
+    "countryPl": "Wietnam",
+    "capitalEn": "Hanoi",
+    "capitalPl": "Hanoi"
+  },
+  "Wales": {
+    "countryEn": "Wales",
+    "countryPl": "Walia",
+    "capitalEn": "Cardiff",
+    "capitalPl": "Cardiff"
+  },
+  "Wallis and Futuna": {
+    "countryEn": "Wallis and Futuna",
+    "countryPl": "Wallis i Futuna",
+    "capitalEn": "Mata-Utu",
+    "capitalPl": "Mata Utu"
+  },
+  "Western Sahara": {
+    "countryEn": "Western Sahara",
+    "countryPl": "Sahara Zachodnia",
+    "capitalEn": "El Aaiún",
+    "capitalPl": "Al-Ujun"
+  },
+  "Yemen": {
+    "countryEn": "Yemen",
+    "countryPl": "Jemen",
+    "capitalEn": "Sanaá",
+    "capitalPl": "Sana"
+  },
+  "Zambia": {
+    "countryEn": "Zambia",
+    "countryPl": "Zambia",
+    "capitalEn": "Lusaka",
+    "capitalPl": "Lusaka"
+  },
+  "Zimbabwe": {
+    "countryEn": "Zimbabwe",
+    "countryPl": "Zimbabwe",
+    "capitalEn": "Harare",
+    "capitalPl": "Harare"
+  }
+}

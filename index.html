@@ -15,12 +15,20 @@
         
 
         <div class="controls">
+            <label for="game-mode" style="display: block; margin-bottom: 5px; font-weight: bold;">Game Mode:</label>
+            <select id="game-mode" class="mode-select">
+            <option value="country-en">1. Countries (English)</option>
+            <option value="country-pl">2. Countries (Polish)</option>
+            <option value="capital-en">3. Capitals (English)</option>
+            <option value="capital-pl">4. Capitals (Polish)</option>
+        </select>
             <button id="start-btn">Start Game</button>
+            <button id="stop-btn" disabled>Stop Game</button>
             <button id="hint-btn" disabled>Give Hint</button>
         </div>
 
         <div id="game-status" class="hidden">
-            <h2>Countries Starting with the Letter: <span id="target-letter">A</span></h2>
+            <h2><span id="target-mode-label">Countries</span> Starting with the Letter: <span id="target-letter">A</span></h2>
             <p>Remaining: <span id="remaining-count">0</span></p>
         </div>
 

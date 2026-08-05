@@ -316,30 +316,47 @@ function handleCountryClick(event, d) {
     }
 }
 
+
 function advanceToNextLetter() {
-    if (gameState.currentLetter === 'Z') {
+    // Define the alphabet sequence, including 'Ł' after 'L'
+    const alphabet = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    ];
+
+    const currentIndex = alphabet.indexOf(gameState.currentLetter);
+
+    // If 'Z' (or the last letter) is reached, or current letter is not found, end game
+    if (currentIndex === -1 || currentIndex === alphabet.length - 1) {
         endGame();
         return;
     }
 
-    let nextCharCode = gameState.currentLetter.charCodeAt(0);
+    let nextIndex = currentIndex + 1;
     let nextCountries = [];
-    
-    while (nextCountries.length === 0 && nextCharCode < 90) {
-        nextCharCode++;
-        const candidateLetter = String.fromCharCode(nextCharCode);
+
+    // Skip letters that have no matching countries/capitals
+    while (nextCountries.length === 0 && nextIndex < alphabet.length) {
+        const candidateLetter = alphabet[nextIndex];
         nextCountries = geoData.filter(d => {
+            if (ignoredAreas.has(d.properties.name)) return false;
+
             const targetVal = getTargetValue(d, gameState.mode);
-            return targetVal.toUpperCase().startsWith(candidateLetter);
+            const startingLetter = getStartingLetter(targetVal);
+            return startingLetter === candidateLetter;
         });
+
+        if (nextCountries.length === 0) {
+            nextIndex++;
+        }
     }
 
-    if (nextCountries.length === 0) {
+    if (nextIndex >= alphabet.length || nextCountries.length === 0) {
         endGame();
         return;
     }
 
-    setupLetter(String.fromCharCode(nextCharCode));
+    setupLetter(alphabet[nextIndex]);
 }
 
 function showCompletionModal() {

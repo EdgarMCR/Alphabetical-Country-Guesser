@@ -516,10 +516,10 @@
     "capitalPl": "Ateny"
   },
   "Greenland": {
-    "countryEn": "Greenland",
-    "countryPl": "Grenlandia",
-    "capitalEn": "Nuuk",
-    "capitalPl": "Nuuk"
+    "countryEn": "Denmark",
+    "countryPl": "Dania",
+    "capitalEn": "Copenhagen",
+    "capitalPl": "Kopenhaga"
   },
   "Grenada": {
     "countryEn": "Grenada",
@@ -756,7 +756,7 @@
     "capitalPl": "Luksemburg"
   },
   "Macedonia": {
-    "countryEn": "Macedonia",
+    "countryEn": "North Macedonia",
     "countryPl": "Macedonia Północna",
     "capitalEn": "Skopje",
     "capitalPl": "Skopje"
@@ -953,12 +953,6 @@
     "capitalEn": "Nicosia",
     "capitalPl": "Nikozja"
   },
-  "United Kingdom Northern Ireland": {
-    "countryEn": "United Kingdom Northern Ireland",
-    "countryPl": "Irlandia Północna",
-    "capitalEn": "Belfast",
-    "capitalPl": "Belfast"
-  },
   "Northern Mariana Islands": {
     "countryEn": "Northern Mariana Islands",
     "countryPl": "Mariany Północne",
@@ -1053,7 +1047,7 @@
     "countryEn": "Qatar",
     "countryPl": "Katar",
     "capitalEn": "Doha",
-    "capitalPl": "Ad-Dauha"
+    "capitalPl": "Doha"
   },
   "Republic of China (Taiwan)": {
     "countryEn": "Republic of China (Taiwan)",

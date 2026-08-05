@@ -48,6 +48,7 @@ let gameState = {
     isPlaying: false,
     mode: 'country-en',
     currentLetter: 'A',
+    letterQueue: [], // Stores current game's letter order
     remainingCountries: [],
     correct: 0,
     incorrect: 0,
@@ -81,6 +82,15 @@ function getTargetValue(d, mode) {
         case 'capital-pl': return meta.capitalPl;
         default: return meta.countryEn;
     }
+}
+// Add helper function for Fisher-Yates shuffle
+function shuffleArray(arr) {
+    const shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
 }
 
 const ALPHABET = [
@@ -218,9 +228,16 @@ function startGame() {
     gameState.isPlaying = true;
     gameState.mode = gameModeSelect.value;
 
-    // Set initial letter based on user selection
     const selectedOption = letterSelect.value;
-    gameState.currentLetter = selectedOption === 'all' ? 'A' : selectedOption;
+    
+    // Initialize the letter sequence based on dropdown choice
+    if (selectedOption === 'all-random') {
+        gameState.letterQueue = shuffleArray(ALPHABET);
+    } else if (selectedOption === 'all') {
+        gameState.letterQueue = [...ALPHABET];
+    } else {
+        gameState.letterQueue = [selectedOption];
+    }
 
     gameState.correct = 0;
     gameState.incorrect = 0;
@@ -232,7 +249,8 @@ function startGame() {
     
     targetModeLabel.innerText = gameState.mode.includes('capital') ? 'Capitals' : 'Countries';
 
-    setupLetter(gameState.currentLetter);
+    // Start with the first valid letter in queue
+    advanceToNextLetter(true);
 
     startBtn.innerText = "Restart Game";
     stopBtn.disabled = false;
@@ -343,34 +361,16 @@ function handleCountryClick(event, d) {
 }
 
 
-function advanceToNextLetter() {
-    // If set to single letter mode, finish game immediately after completing that letter
-    if (letterSelect.value !== 'all') {
-        endGame();
-        return;
+function advanceToNextLetter(isInitial = false) {
+    // If advancing after completing a letter, remove the completed letter from queue
+    if (!isInitial && gameState.letterQueue.length > 0) {
+        gameState.letterQueue.shift();
     }
 
-    // Define the alphabet sequence, including 'Ł' after 'L'
-    const alphabet = [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    ];
-
-    const currentIndex = alphabet.indexOf(gameState.currentLetter);
-
-    // If 'Z' (or the last letter) is reached, or current letter is not found, end game
-    if (currentIndex === -1 || currentIndex === alphabet.length - 1) {
-        endGame();
-        return;
-    }
-
-    let nextIndex = currentIndex + 1;
-    let nextCountries = [];
-
-    // Skip letters that have no matching countries/capitals
-    while (nextCountries.length === 0 && nextIndex < alphabet.length) {
-        const candidateLetter = alphabet[nextIndex];
-        nextCountries = geoData.filter(d => {
+    // Process queue until a letter with matching targets is found
+    while (gameState.letterQueue.length > 0) {
+        const candidateLetter = gameState.letterQueue[0];
+        const matchingCountries = geoData.filter(d => {
             if (ignoredAreas.has(d.properties.name)) return false;
 
             const targetVal = getTargetValue(d, gameState.mode);
@@ -378,17 +378,17 @@ function advanceToNextLetter() {
             return startingLetter === candidateLetter;
         });
 
-        if (nextCountries.length === 0) {
-            nextIndex++;
+        if (matchingCountries.length > 0) {
+            setupLetter(candidateLetter);
+            return;
         }
+
+        // Drop letters that have 0 matching countries/capitals in the selected mode
+        gameState.letterQueue.shift();
     }
 
-    if (nextIndex >= alphabet.length || nextCountries.length === 0) {
-        endGame();
-        return;
-    }
-
-    setupLetter(alphabet[nextIndex]);
+    // Queue exhausted — end game
+    endGame();
 }
 
 function showCompletionModal() {
@@ -436,9 +436,13 @@ function endGame() {
     stopBtn.disabled = true;
     hintBtn.disabled = true;
 
-    const modeMessage = letterSelect.value === 'all' 
-        ? `the entire alphabet` 
-        : `letter ${gameState.currentLetter}`;
+    const selectedOption = letterSelect.value;
+    let modeMessage = `letter ${gameState.currentLetter}`;
+    if (selectedOption === 'all') {
+        modeMessage = `the entire alphabet (A–Z)`;
+    } else if (selectedOption === 'all-random') {
+        modeMessage = `the entire alphabet in random order`;
+    }
         
     gameOverText.innerHTML = `Incredible! You finished ${modeMessage} in <strong style="color: #4CAF50;">${timerEl.innerText}</strong> seconds!`;
     gameOverModal.classList.remove('hidden');

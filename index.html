@@ -21,7 +21,12 @@
             <option value="country-pl">2. Countries (Polish)</option>
             <option value="capital-en">3. Capitals (English)</option>
             <option value="capital-pl">4. Capitals (Polish)</option>
-        </select>
+            </select>
+
+            <label for="letter-select" style="display: block; margin-top: 10px; margin-bottom: 5px; font-weight: bold;">Letter Selection:</label>
+            <select id="letter-select" class="mode-select">
+                <option value="all">All Letters (A–Z)</option>
+            </select>
             <button id="start-btn">Start Game</button>
             <button id="stop-btn" disabled>Stop Game</button>
             <button id="hint-btn" disabled>Give Hint</button>
@@ -45,16 +50,23 @@
         <span class="hud-count" id="hud-count">0 left</span>
     </div>
 
-    <div id="completion-modal" class="hidden">
-        <button id="close-modal-btn">&times;</button>
-        <p>Congratulations! All countries for <strong id="completed-letter">A</strong> completed!</p>
+    <div id="globe-container">
+        <div id="completion-modal" class="hidden">
+            <button id="close-modal-btn">&times;</button>
+            <p>Congratulations! All countries for <strong id="completed-letter">A</strong> completed!</p>
+        </div>
+        
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="hidden">
+            <button id="close-game-over-btn">&times;</button>
+            <p id="game-over-text"></p>
+        </div>
     </div>
+
     <div class="zoom-controls">
         <button id="zoom-in">+</button>
         <button id="zoom-out">−</button>
     </div>
-
-    <div id="globe-container"></div>
     
     <div id="tooltip" class="hidden"></div>
 

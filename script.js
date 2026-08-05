@@ -1,8 +1,8 @@
 // --- Configuration & State ---
-const isMobile = window.innerWidth <= 768;
-const width = isMobile ? window.innerWidth : window.innerWidth - 300;
-const height = window.innerHeight;
-const initialScale = isMobile ? 250 : 350;
+const container = document.getElementById('globe-container');
+let width = container.clientWidth || (window.innerWidth - (window.innerWidth <= 768 ? 0 : 300));
+let height = container.clientHeight || window.innerHeight;
+const initialScale = window.innerWidth <= 768 ? 250 : 350;
 
 let geoData = null; 
 let capitalsMap = {}; 
@@ -83,10 +83,16 @@ function getTargetValue(d, mode) {
     }
 }
 
+const ALPHABET = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+];
+
 // --- DOM Elements ---
 const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
 const hintBtn = document.getElementById('hint-btn');
+const letterSelect = document.getElementById('letter-select');
 const gameModeSelect = document.getElementById('game-mode');
 const gameStatus = document.getElementById('game-status');
 const targetModeLabel = document.getElementById('target-mode-label');
@@ -103,6 +109,9 @@ const hudCount = document.getElementById('hud-count');
 const completionModal = document.getElementById('completion-modal');
 const completedLetterEl = document.getElementById('completed-letter');
 const closeModalBtn = document.getElementById('close-modal-btn');
+const gameOverModal = document.getElementById('game-over-modal');
+const gameOverText = document.getElementById('game-over-text');
+const closeGameOverBtn = document.getElementById('close-game-over-btn');
 const uiPanel = document.getElementById('ui-panel');
 
 // --- D3 Setup ---
@@ -188,6 +197,14 @@ function setupInteraction() {
     });
 }
 
+// Dynamically populate letter choices on page load
+ALPHABET.forEach(letter => {
+    const option = document.createElement('option');
+    option.value = letter;
+    option.textContent = `Letter ${letter}`;
+    letterSelect.appendChild(option);
+});
+
 // --- Game Logic ---
 startBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
@@ -200,13 +217,18 @@ function toggleMenu() {
 function startGame() {
     gameState.isPlaying = true;
     gameState.mode = gameModeSelect.value;
-    gameState.currentLetter = 'A';
+
+    // Set initial letter based on user selection
+    const selectedOption = letterSelect.value;
+    gameState.currentLetter = selectedOption === 'all' ? 'A' : selectedOption;
+
     gameState.correct = 0;
     gameState.incorrect = 0;
     gameState.hints = 0;
     gameState.startTime = Date.now();
     
     gameModeSelect.disabled = true;
+    letterSelect.disabled = true;
     
     targetModeLabel.innerText = gameState.mode.includes('capital') ? 'Capitals' : 'Countries';
 
@@ -236,6 +258,7 @@ function stopGame() {
 
     // Re-enable settings and disable in-game controls
     gameModeSelect.disabled = false;
+    letterSelect.disabled = false;
     startBtn.innerText = "Start Game";
     stopBtn.disabled = true;
     hintBtn.disabled = true;
@@ -243,6 +266,8 @@ function stopGame() {
     // Hide active status UI and clear highlights
     gameStatus.classList.add('hidden');
     globeHud.classList.add('hidden');
+    completionModal.classList.add('hidden');
+    gameOverModal.classList.add('hidden');
     d3.selectAll(".country").classed("found", false).classed("hinted", false);
 }
 
@@ -286,8 +311,9 @@ function handleCountryClick(event, d) {
 
     setTimeout(() => { tooltip.classList.add('hidden'); }, 2500);
 
-    if (!gameState.isPlaying || !completionModal.classList.contains('hidden')) return;
-    
+    // Ignore clicks if game is not playing or any modal is visible
+    if (!gameState.isPlaying || !completionModal.classList.contains('hidden') || !gameOverModal.classList.contains('hidden')) return;
+
     const countryNode = d3.select(this);
     if (countryNode.classed("found")) return;
 
@@ -318,6 +344,12 @@ function handleCountryClick(event, d) {
 
 
 function advanceToNextLetter() {
+    // If set to single letter mode, finish game immediately after completing that letter
+    if (letterSelect.value !== 'all') {
+        endGame();
+        return;
+    }
+
     // Define the alphabet sequence, including 'Ł' after 'L'
     const alphabet = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 
@@ -395,13 +427,21 @@ function giveHint() {
     }, 2000);
 }
 
+
 function endGame() {
     gameState.isPlaying = false;
     gameModeSelect.disabled = false;
+    letterSelect.disabled = false;
     clearInterval(gameState.timerInterval);
     stopBtn.disabled = true;
     hintBtn.disabled = true;
-    alert(`Incredible! You finished the entire alphabet in ${timerEl.innerText} seconds!`);
+
+    const modeMessage = letterSelect.value === 'all' 
+        ? `the entire alphabet` 
+        : `letter ${gameState.currentLetter}`;
+        
+    gameOverText.innerHTML = `Incredible! You finished ${modeMessage} in <strong style="color: #4CAF50;">${timerEl.innerText}</strong> seconds!`;
+    gameOverModal.classList.remove('hidden');
 }
 
 function updateStatsUI() {
@@ -416,10 +456,15 @@ function updateStatsUI() {
 }
 
 window.addEventListener('resize', () => {
-    const newWidth = window.innerWidth <= 768 ? window.innerWidth : window.innerWidth - 300;
-    const newHeight = window.innerHeight;
+    const newWidth = container.clientWidth;
+    const newHeight = container.clientHeight;
+    
     svg.attr("width", newWidth).attr("height", newHeight);
     projection.translate([newWidth / 2, newHeight / 2]);
     ocean.attr("cx", newWidth / 2).attr("cy", newHeight / 2);
     g.selectAll("path").attr("d", path);
+});
+
+closeGameOverBtn.addEventListener('click', () => {
+    gameOverModal.classList.add('hidden');
 });

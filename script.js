@@ -69,7 +69,8 @@ function getMeta(d) {
         countryEn: jsonEntry?.countryEn || key || "Unknown",
         countryPl: jsonEntry?.countryPl || key || "Unknown",
         capitalEn: jsonEntry?.capitalEn || "Unknown",
-        capitalPl: jsonEntry?.capitalPl || "Unknown"
+        capitalPl: jsonEntry?.capitalPl || "Unknown",
+        continent: jsonEntry?.continent || "Unknown"
     };
 }
 
@@ -103,6 +104,7 @@ const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
 const hintBtn = document.getElementById('hint-btn');
 const letterSelect = document.getElementById('letter-select');
+const continentSelect = document.getElementById('continent-select');
 const gameModeSelect = document.getElementById('game-mode');
 const gameStatus = document.getElementById('game-status');
 const targetModeLabel = document.getElementById('target-mode-label');
@@ -220,6 +222,8 @@ startBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
 
+
+
 function toggleMenu() {
     uiPanel.classList.toggle('minimized');
 }
@@ -246,6 +250,7 @@ function startGame() {
     
     gameModeSelect.disabled = true;
     letterSelect.disabled = true;
+    continentSelect.disabled = true;
     
     targetModeLabel.innerText = gameState.mode.includes('capital') ? 'Capitals' : 'Countries';
 
@@ -277,6 +282,7 @@ function stopGame() {
     // Re-enable settings and disable in-game controls
     gameModeSelect.disabled = false;
     letterSelect.disabled = false;
+    continentSelect.disabled = false;
     startBtn.innerText = "Start Game";
     stopBtn.disabled = true;
     hintBtn.disabled = true;
@@ -293,13 +299,22 @@ function setupLetter(letter) {
     gameState.currentLetter = letter;
     hudLetter.innerText = gameState.currentLetter;
     
-    // Filter features matching letter for selected game mode
+    const selectedContinent = continentSelect.value; // Get active continent
+
+    // Filter features matching letter AND continent for selected game mode
     gameState.remainingCountries = geoData.filter(d => {
         const d3Name = d.properties.name;
-        if (ignoredAreas.has(d3Name)) return false; // Exclude from count
+        if (ignoredAreas.has(d3Name)) return false; 
 
         const targetVal = getTargetValue(d, gameState.mode);
         const startingLetter = getStartingLetter(targetVal);
+        
+        // Continent Check
+        const meta = getMeta(d);
+        if (selectedContinent !== 'world' && meta.continent !== selectedContinent) {
+            return false;
+        }
+
         return startingLetter === letter;
     });
 
@@ -360,12 +375,12 @@ function handleCountryClick(event, d) {
     }
 }
 
-
 function advanceToNextLetter(isInitial = false) {
-    // If advancing after completing a letter, remove the completed letter from queue
     if (!isInitial && gameState.letterQueue.length > 0) {
         gameState.letterQueue.shift();
     }
+
+    const selectedContinent = continentSelect.value; // Get active continent
 
     // Process queue until a letter with matching targets is found
     while (gameState.letterQueue.length > 0) {
@@ -375,6 +390,13 @@ function advanceToNextLetter(isInitial = false) {
 
             const targetVal = getTargetValue(d, gameState.mode);
             const startingLetter = getStartingLetter(targetVal);
+            
+            // Continent Check
+            const meta = getMeta(d);
+            if (selectedContinent !== 'world' && meta.continent !== selectedContinent) {
+                return false;
+            }
+
             return startingLetter === candidateLetter;
         });
 
@@ -383,7 +405,7 @@ function advanceToNextLetter(isInitial = false) {
             return;
         }
 
-        // Drop letters that have 0 matching countries/capitals in the selected mode
+        // Drop letters that have 0 matching countries/capitals in the selected mode/continent
         gameState.letterQueue.shift();
     }
 
@@ -391,14 +413,29 @@ function advanceToNextLetter(isInitial = false) {
     endGame();
 }
 
+let completionTimeoutForBanner; 
+
 function showCompletionModal() {
     completedLetterEl.innerText = gameState.currentLetter;
     completionModal.classList.remove('hidden');
+    
+    // Automatically close the modal and advance after 5 seconds (5000ms)
+    completionTimeoutForBanner = setTimeout(() => {
+        closeCompletionModal();
+    }, 3000);
+}
+
+function closeCompletionModal() {
+    // Only proceed if the modal is actually visible
+    if (!completionModal.classList.contains('hidden')) {
+        completionModal.classList.add('hidden');
+        advanceToNextLetter();
+    }
 }
 
 closeModalBtn.addEventListener('click', () => {
-    completionModal.classList.add('hidden');
-    advanceToNextLetter();
+    clearTimeout(completionTimeout); // Stops the automatic 5-second timer
+    closeCompletionModal();
 });
 
 function giveHint() {
@@ -432,6 +469,7 @@ function endGame() {
     gameState.isPlaying = false;
     gameModeSelect.disabled = false;
     letterSelect.disabled = false;
+    continentSelect.disabled = false;
     clearInterval(gameState.timerInterval);
     stopBtn.disabled = true;
     hintBtn.disabled = true;

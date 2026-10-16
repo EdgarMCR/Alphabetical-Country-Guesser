@@ -125,6 +125,7 @@ const gameOverModal = document.getElementById('game-over-modal');
 const gameOverText = document.getElementById('game-over-text');
 const closeGameOverBtn = document.getElementById('close-game-over-btn');
 const uiPanel = document.getElementById('ui-panel');
+const noCountriesBanner = document.getElementById('no-countries-banner');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -229,10 +230,33 @@ function toggleMenu() {
 }
 
 function startGame() {
+    const selectedOption = letterSelect.value;
+    const selectedContinent = continentSelect.value;
+    const currentMode = gameModeSelect.value;
+
+    // Check for empty letter selections ---
+    if (selectedOption !== 'all' && selectedOption !== 'all-random') {
+        const hasMatches = geoData.some(d => {
+            if (ignoredAreas.has(d.properties.name)) return false; 
+            const targetVal = getTargetValue(d, currentMode);
+            const startingLetter = getStartingLetter(targetVal);
+            
+            // Apply Continent Check
+            const meta = getMeta(d);
+            if (selectedContinent !== 'world' && meta.continent !== selectedContinent) {
+                return false;
+            }
+            return startingLetter === selectedOption;
+        });
+
+        if (!hasMatches) {
+            showNoCountriesBanner(selectedOption);
+            return; // Abort starting the game to prevent undefined behavior
+        }
+    }
+
     gameState.isPlaying = true;
     gameState.mode = gameModeSelect.value;
-
-    const selectedOption = letterSelect.value;
     
     // Initialize the letter sequence based on dropdown choice
     if (selectedOption === 'all-random') {
@@ -510,3 +534,16 @@ window.addEventListener('resize', () => {
 closeGameOverBtn.addEventListener('click', () => {
     gameOverModal.classList.add('hidden');
 });
+
+let bannerTimeout;
+
+function showNoCountriesBanner(letter) {
+    noCountriesBanner.innerHTML = `No results found starting with <strong>${letter}</strong> for this mode/continent!`;
+    noCountriesBanner.classList.remove('hidden');
+    
+    // Clear any existing timeout so rapid clicks don't hide the banner too early
+    clearTimeout(bannerTimeout);
+    bannerTimeout = setTimeout(() => {
+        noCountriesBanner.classList.add('hidden');
+    }, 3000);
+}

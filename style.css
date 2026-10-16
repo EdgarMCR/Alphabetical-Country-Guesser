@@ -117,6 +117,9 @@ button:hover:not(:disabled) {
         box-sizing: border-box;
         transition: transform 0.3s ease-in-out;
         border-radius: 20px 20px 0 0;
+        max-height: 100vh;
+        overflow-y: auto;
+        z-index: 30; 
     }
 
     /* This class will slide the menu down out of view */
@@ -314,4 +317,21 @@ button:hover:not(:disabled) {
 
 #stop-btn:hover:not(:disabled) {
     background-color: #c62828;
+}
+
+/* --- No Countries Banner --- */
+#no-countries-banner {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e53935; /* Red warning color */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
 }

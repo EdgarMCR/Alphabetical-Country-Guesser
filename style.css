@@ -102,57 +102,18 @@ button:hover:not(:disabled) {
     color: #ccc;
 }
 
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column; /* Stack UI and Globe vertically */
-    }
-
-    .ui-panel {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        box-sizing: border-box;
-        transition: transform 0.3s ease-in-out;
-        border-radius: 20px 20px 0 0;
-        max-height: 100vh;
-        overflow-y: auto;
-        z-index: 30; 
-    }
-
-    /* This class will slide the menu down out of view */
-    .ui-panel.minimized {
-        transform: translateY(80%); /* Leaves just the top header visible */
-    }
-
-    #globe-container {
-        width: 100vw;
-        height: 100vh;
-    }
-
-    #tooltip {
-        font-size: 12px;
-        padding: 8px;
-    }
-}
-
 /* Add a toggle handle for mobile */
 .mobile-toggle {
     display: none;
-    text-align: center;
-    padding: 5px;
-    cursor: pointer;
-    background: #333;
-    border-radius: 10px;
-    margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-    .mobile-toggle {
-        display: block;
-    }
+.mobile-close-bottom {
+    display: none;
+    background-color: #555;
+    margin-top: 15px;
+}
+.mobile-close-bottom:hover {
+    background-color: #777;
 }
 
 #globe-container {
@@ -195,14 +156,6 @@ button:hover:not(:disabled) {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-/* Adjust position on mobile to not overlap with the pull-handle */
-@media (max-width: 768px) {
-    .zoom-controls {
-        top: 15px;
-        right: 15px;
-    }
 }
 
 /* --- Globe HUD --- */
@@ -281,16 +234,7 @@ button:hover:not(:disabled) {
     background: transparent;
 }
 
-/* Mobile Adjustments for the HUD */
-@media (max-width: 768px) {
-    #globe-hud {
-        top: 15px;
-        left: 15px;
-        padding: 8px 15px;
-    }
-    .hud-letter { font-size: 24px; }
-    .hud-count { font-size: 14px; }
-}
+
 
 .mode-select {
     width: 100%;
@@ -334,4 +278,71 @@ button:hover:not(:disabled) {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; 
+    }
+
+    .ui-panel {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        box-sizing: border-box;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 20px 20px 0 0;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 30; 
+        padding-top: 0; /* Add this to allow flush sticky positioning */
+    }
+
+    /* This class will slide the menu down out of view */
+    .ui-panel.minimized {
+        transform: translateY(80%); /* Leaves just the top header visible */
+    }
+
+    .mobile-close-bottom {
+        display: block !important;
+    }
+
+    #globe-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #tooltip {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .mobile-toggle {
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        background-color: #1e1e1e; /* Solid background to hide scrolling text */
+        margin-left: -20px; /* Counteracts the side padding of ui-panel */
+        margin-right: -20px;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 20px 20px 0 0;
+        border-bottom: 2px solid #333;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+    }
+    .zoom-controls {
+        top: 15px;
+        right: 15px;
+    }
+    #globe-hud {
+        top: 15px;
+        left: 15px;
+        padding: 8px 15px;
+    }
+    .hud-letter { font-size: 24px; }
+    .hud-count { font-size: 14px; }
 }

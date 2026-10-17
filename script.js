@@ -126,6 +126,7 @@ const gameOverText = document.getElementById('game-over-text');
 const closeGameOverBtn = document.getElementById('close-game-over-btn');
 const uiPanel = document.getElementById('ui-panel');
 const noCountriesBanner = document.getElementById('no-countries-banner');
+const mobileCloseBottomBtn = document.getElementById('mobile-close-bottom');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -222,7 +223,7 @@ ALPHABET.forEach(letter => {
 startBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
-
+mobileCloseBottomBtn.addEventListener('click', toggleMenu);
 
 
 function toggleMenu() {

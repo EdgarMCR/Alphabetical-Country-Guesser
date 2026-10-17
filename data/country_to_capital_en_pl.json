@@ -497,11 +497,11 @@
         "continent": "Africa"
     },
     "Falkland Islands": {
-        "countryEn": "Falkland Islands",
-        "countryPl": "Falklandy",
-        "capitalEn": "Stanley",
-        "capitalPl": "Stanley",
-        "continent": "South America"
+        "countryEn": "United Kingdom",
+        "countryPl": "Wielka Brytania",
+        "capitalEn": "London",
+        "capitalPl": "Londyn",
+        "continent": "Europe"
     },
     "Faroe Islands": {
         "countryEn": "Faroe Islands",

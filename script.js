@@ -175,33 +175,88 @@ function drawMap() {
         .on("click", handleCountryClick);
 }
 
+// function setupInteraction() {
+//     const zoom = d3.zoom()
+//         .scaleExtent([0.5, 5])
+//         .filter((event) => {
+//             if (event.type === 'touchstart' && event.touches && event.touches.length === 1) return false;
+//             return (!event.ctrlKey || event.type === 'wheel') && !event.button;
+//         })
+//         .on("zoom", (event) => {
+//             projection.scale(initialScale * event.transform.k);
+//             g.selectAll("path").attr("d", path);
+//             ocean.attr("r", projection.scale());
+//         });
+
+//     const drag = d3.drag()
+//         .on("drag", (event) => {
+//             const rotate = projection.rotate();
+//             projection.rotate([
+//                 rotate[0] + event.dx * (0.5 / (projection.scale() / initialScale)), 
+//                 rotate[1] - event.dy * (0.5 / (projection.scale() / initialScale))
+//             ]);
+//             g.selectAll("path").attr("d", path);
+//         });
+
+//     svg.call(zoom).on("mousedown.zoom", null);
+//     g.call(drag);
+//     ocean.call(drag);
+
+//     d3.select('#zoom-in').on('click', () => {
+//         svg.transition().duration(300).call(zoom.scaleBy, 1.4);
+//     });
+
+//     d3.select('#zoom-out').on('click', () => {
+//         svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+//     });
+// }
+
 function setupInteraction() {
+    // State variables to track coordinate deltas
+    let lastX = 0;
+    let lastY = 0;
+    let lastK = 1;
+
     const zoom = d3.zoom()
         .scaleExtent([0.5, 5])
-        .filter((event) => {
-            if (event.type === 'touchstart' && event.touches && event.touches.length === 1) return false;
-            return (!event.ctrlKey || event.type === 'wheel') && !event.button;
+        .on("start", (event) => {
+            // Anchor coordinates at the beginning of a gesture
+            lastX = event.transform.x;
+            lastY = event.transform.y;
+            lastK = event.transform.k;
         })
         .on("zoom", (event) => {
-            projection.scale(initialScale * event.transform.k);
+            const t = event.transform;
+            projection.scale(initialScale * t.k);
+
+            // Only apply rotation if the scale hasn't changed (a pure pan).
+            // This prevents the globe from rotating wildly while the user is pinching.
+            if (t.k === lastK) {
+                // Normalize the delta movement by current scale to get screen pixels
+                const dx = (t.x - lastX) / t.k;
+                const dy = (t.y - lastY) / t.k;
+                const rotate = projection.rotate();
+                const sensitivity = 0.5 / t.k;
+                
+                projection.rotate([
+                    rotate[0] + dx * sensitivity, 
+                    rotate[1] - dy * sensitivity
+                ]);
+            }
+
+            // Sync state for the next frame
+            lastX = t.x;
+            lastY = t.y;
+            lastK = t.k;
+
+            // Update DOM 
             g.selectAll("path").attr("d", path);
             ocean.attr("r", projection.scale());
         });
 
-    const drag = d3.drag()
-        .on("drag", (event) => {
-            const rotate = projection.rotate();
-            projection.rotate([
-                rotate[0] + event.dx * (0.5 / (projection.scale() / initialScale)), 
-                rotate[1] - event.dy * (0.5 / (projection.scale() / initialScale))
-            ]);
-            g.selectAll("path").attr("d", path);
-        });
+    svg.call(zoom);
 
-    svg.call(zoom).on("mousedown.zoom", null);
-    g.call(drag);
-    ocean.call(drag);
-
+    // Zoom UI Buttons
     d3.select('#zoom-in').on('click', () => {
         svg.transition().duration(300).call(zoom.scaleBy, 1.4);
     });

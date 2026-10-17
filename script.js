@@ -127,6 +127,7 @@ const closeGameOverBtn = document.getElementById('close-game-over-btn');
 const uiPanel = document.getElementById('ui-panel');
 const noCountriesBanner = document.getElementById('no-countries-banner');
 const mobileCloseBottomBtn = document.getElementById('mobile-close-bottom');
+const mobileHintBtn = document.getElementById('mobile-hint-btn');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -174,42 +175,6 @@ function drawMap() {
         .attr("id", d => "country-" + d.id)
         .on("click", handleCountryClick);
 }
-
-// function setupInteraction() {
-//     const zoom = d3.zoom()
-//         .scaleExtent([0.5, 5])
-//         .filter((event) => {
-//             if (event.type === 'touchstart' && event.touches && event.touches.length === 1) return false;
-//             return (!event.ctrlKey || event.type === 'wheel') && !event.button;
-//         })
-//         .on("zoom", (event) => {
-//             projection.scale(initialScale * event.transform.k);
-//             g.selectAll("path").attr("d", path);
-//             ocean.attr("r", projection.scale());
-//         });
-
-//     const drag = d3.drag()
-//         .on("drag", (event) => {
-//             const rotate = projection.rotate();
-//             projection.rotate([
-//                 rotate[0] + event.dx * (0.5 / (projection.scale() / initialScale)), 
-//                 rotate[1] - event.dy * (0.5 / (projection.scale() / initialScale))
-//             ]);
-//             g.selectAll("path").attr("d", path);
-//         });
-
-//     svg.call(zoom).on("mousedown.zoom", null);
-//     g.call(drag);
-//     ocean.call(drag);
-
-//     d3.select('#zoom-in').on('click', () => {
-//         svg.transition().duration(300).call(zoom.scaleBy, 1.4);
-//     });
-
-//     d3.select('#zoom-out').on('click', () => {
-//         svg.transition().duration(300).call(zoom.scaleBy, 0.7);
-//     });
-// }
 
 function setupInteraction() {
     // State variables to track coordinate deltas
@@ -279,7 +244,7 @@ startBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
 mobileCloseBottomBtn.addEventListener('click', toggleMenu);
-
+mobileHintBtn.addEventListener('click', giveHint);
 
 function toggleMenu() {
     uiPanel.classList.toggle('minimized');
@@ -342,6 +307,7 @@ function startGame() {
     hintBtn.disabled = false;
     gameStatus.classList.remove('hidden');
     globeHud.classList.remove('hidden');
+    // mobileHintBtn.classList.remove('hidden');
     d3.selectAll(".country").classed("found", false).classed("hinted", false);
     
     clearInterval(gameState.timerInterval);
@@ -370,6 +336,7 @@ function stopGame() {
     // Hide active status UI and clear highlights
     gameStatus.classList.add('hidden');
     globeHud.classList.add('hidden');
+    mobileHintBtn.classList.add('hidden');
     completionModal.classList.add('hidden');
     gameOverModal.classList.add('hidden');
     d3.selectAll(".country").classed("found", false).classed("hinted", false);
@@ -521,6 +488,11 @@ closeModalBtn.addEventListener('click', () => {
 function giveHint() {
     if (!gameState.isPlaying || gameState.remainingCountries.length === 0) return;
     
+    // Auto-close the menu on mobile to instantly reveal the hint
+    if (window.innerWidth <= 768 && !uiPanel.classList.contains('minimized')) {
+        uiPanel.classList.add('minimized');
+    }
+
     gameState.hints++;
     updateStatsUI();
 
@@ -541,7 +513,7 @@ function giveHint() {
 
     setTimeout(() => {
         countryEls.classed("hinted", false);
-    }, 2000);
+    }, 3000);
 }
 
 

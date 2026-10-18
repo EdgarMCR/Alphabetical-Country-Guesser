@@ -128,6 +128,7 @@ const uiPanel = document.getElementById('ui-panel');
 const noCountriesBanner = document.getElementById('no-countries-banner');
 const mobileCloseBottomBtn = document.getElementById('mobile-close-bottom');
 const mobileHintBtn = document.getElementById('mobile-hint-btn');
+const mobileQuestionBtn = document.getElementById('mobile-question-hint');
 
 // --- D3 Setup ---
 const svg = d3.select("#globe-container")
@@ -245,6 +246,7 @@ stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
 mobileCloseBottomBtn.addEventListener('click', toggleMenu);
 mobileHintBtn.addEventListener('click', giveHint);
+mobileQuestionBtn.addEventListener('click', giveHint);
 
 function toggleMenu() {
     uiPanel.classList.toggle('minimized');

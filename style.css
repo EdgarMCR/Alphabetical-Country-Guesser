@@ -282,6 +282,11 @@ button:hover:not(:disabled) {
 
 #mobile-hint-btn { display: none; }
 
+/* Hide by default */
+.mobile-only-btn {
+    display: none;
+}
+
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
     body {
@@ -301,6 +306,7 @@ button:hover:not(:disabled) {
         overflow-y: auto;
         z-index: 30; 
         padding-top: 0; /* Add this to allow flush sticky positioning */
+        padding-bottom: 80;
     }
 
     /* This class will slide the menu down out of view */
@@ -371,4 +377,14 @@ button:hover:not(:disabled) {
     #mobile-hint-btn.hidden {
         display: none !important; /* Keep it hidden when the game is stopped */
     }
+
+    #mobile-question-hint {
+    /* Override the global styles */
+    width: auto;            /* Removes the 100% width */
+    padding: 2px 8px;       /* Makes it much smaller */
+    margin: 5px 0 0 5px;    /* Adjusts spacing from the letter box */
+    font-size: 14px;        /* Shrinks the question mark text */
+    border-radius: 50%;     /* Optional: makes it a small circle */
+    background-color: #555; /* Optional: change to a more subtle color */
+}
 }

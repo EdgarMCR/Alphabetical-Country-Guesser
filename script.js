@@ -126,7 +126,6 @@ const gameOverText = document.getElementById('game-over-text');
 const closeGameOverBtn = document.getElementById('close-game-over-btn');
 const uiPanel = document.getElementById('ui-panel');
 const noCountriesBanner = document.getElementById('no-countries-banner');
-const mobileCloseBottomBtn = document.getElementById('mobile-close-bottom');
 const mobileHintBtn = document.getElementById('mobile-hint-btn');
 const mobileQuestionBtn = document.getElementById('mobile-question-hint');
 
@@ -244,9 +243,12 @@ ALPHABET.forEach(letter => {
 startBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
 hintBtn.addEventListener('click', giveHint);
-mobileCloseBottomBtn.addEventListener('click', toggleMenu);
 mobileHintBtn.addEventListener('click', giveHint);
-mobileQuestionBtn.addEventListener('click', giveHint);
+// mobileQuestionBtn.addEventListener('click', giveHint);
+mobileQuestionBtn.addEventListener('click', () => {
+    console.log("Button was clicked!"); // If this shows in the console, the problem is inside giveHint()
+    giveHint();
+});
 
 function toggleMenu() {
     uiPanel.classList.toggle('minimized');

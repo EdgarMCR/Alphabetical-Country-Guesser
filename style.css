@@ -353,6 +353,10 @@ button:hover:not(:disabled) {
     }
     .hud-letter { font-size: 24px; }
     .hud-count { font-size: 14px; }
+
+    .mobile-only-btn {
+        display: inline-block;
+    }
     #mobile-hint-btn {
         display: block; /* Show only on mobile */
         position: absolute;
@@ -382,7 +386,7 @@ button:hover:not(:disabled) {
     /* Override the global styles */
     width: auto;            /* Removes the 100% width */
     padding: 2px 8px;       /* Makes it much smaller */
-    margin: 5px 0 0 5px;    /* Adjusts spacing from the letter box */
+    margin: 0px 0 0 0px;    /* Adjusts spacing from the letter box */
     font-size: 14px;        /* Shrinks the question mark text */
     border-radius: 50%;     /* Optional: makes it a small circle */
     background-color: #555; /* Optional: change to a more subtle color */
